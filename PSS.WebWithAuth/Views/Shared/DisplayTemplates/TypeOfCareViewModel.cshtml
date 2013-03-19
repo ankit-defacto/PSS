@@ -1,0 +1,7 @@
+﻿@model PSS.WebWithAuth.ViewModels.TypeOfCareViewModel
+@if (Model.Checked)
+{
+<dd>
+    @Html.DisplayFor(model => model.TypeOfCareName) @Html.HiddenFor(model => model.TypeOfCareGuid)
+</dd>
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" xmlns:ov="http://www.concordmfg.com/MetadataOverview2.xsd">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21004</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1511068-67B0-4922-BE4C-70DBC3100E53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConcordMfg.PremierSeniorSolutions.WebService.ServiceImplementation</RootNamespace>
+    <AssemblyName>ConcordMfg.PremierSeniorSolutions.WebService.ServiceImplementation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Service Host\PremierSeniorSolutions.Host\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MoreEntityConversion.cs" />
+    <Compile Include="CityStateZip.cs" />
+    <Compile Include="CityStateZipWithFacility.cs" />
+    <Compile Include="Click.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="ClientAudit.cs" />
+    <Compile Include="Facility.cs" />
+    <Compile Include="FacilityWithCityStateZip.cs" />
+    <Compile Include="FacilityWithOffering.cs" />
+    <Compile Include="FacilityAudit.cs" />
+    <Compile Include="FacilityLocationCriteria.cs" />
+    <Compile Include="FacilityOffering.cs" />
+    <Compile Include="ListingType.cs" />
+    <Compile Include="Offering.cs" />
+    <Compile Include="OfferingWithFacility.cs" />
+    <Compile Include="PaymentInfo.cs" />
+    <Compile Include="PaymentInfoAudit.cs" />
+    <Compile Include="FacilityPhoto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{50012780-DCF4-4EEA-B83B-F400A3599DFB}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{8B9140F1-CBD1-4BD2-9ABA-8B8ED68FD189}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{5CDA2E45-B066-4A9E-8AB2-B66287F3AEC7}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

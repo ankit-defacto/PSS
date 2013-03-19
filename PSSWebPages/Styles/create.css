@@ -1,0 +1,45 @@
+﻿#formContainer {
+}
+
+#formParentDiv {
+	width: 560px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.profileHeight {
+	height: 370px;
+}
+
+.listingHeight {
+	height: 590px;
+}
+
+.formLabels {
+	width: 118px; /* should be 160 without border. */
+	/*height: 350px;*/
+	float: left;
+	margin-top: -6px;
+}
+
+.formLabels div {
+	margin-top: 27px;
+}
+
+.formInputs {
+	width: 158px; /* should be 160 without border. */
+	/*height: 350px;*/
+	float: left;
+}
+
+.formInputs input {
+	margin-top: 12px;
+	padding: 4px;
+	background-color: #EEE;
+}
+
+#checklistContainer {
+	width: 160px; /* should be 240 without border. */
+}

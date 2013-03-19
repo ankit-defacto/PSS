@@ -1,0 +1,4 @@
+﻿@{
+ViewData["placeholder"] = ViewData.ModelMetadata.Watermark;
+ViewData["class"] = "input textarea";
+} @Html.TextArea("", ViewData.TemplateInfo.FormattedModelValue.ToString(), 0, 0, ViewData)

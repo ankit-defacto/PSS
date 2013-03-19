@@ -1,0 +1,159 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingViewModelEdit
+@using PSS.WebWithAuth.Infrastructure
+@Html.Resource(@<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry" type="text/javascript"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pssmaps.js")"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/listings.js")"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pss.listings.edit.js")"></script>, "js")
+@using (Html.BeginForm(Model.ActionName, "Listings", FormMethod.Post, new { @class = "searchForm editForm" }))
+{
+    @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+    @Html.ValidationSummary(true)
+    @Html.ValidationMessage("FormSubmit")
+    @Html.HiddenFor(model => model.ClientGuid)
+    @Html.HiddenFor(model => model.FacilityGuid)
+    @Html.HiddenFor(model => model.CityStateZipGuid)
+    @Html.HiddenFor(model => model.ActionName)
+    @Html.HiddenFor(model => model.SaveButtonText)
+	<div class="fieldRow">
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Facility Name
+                @Html.EditorFor(model => model.FacilityName)
+                @Html.ValidationMessageFor(model => model.FacilityName)
+			</label>
+			<label class="smallCol">
+				Profile Photo URL
+                @Html.EditorFor(model => model.PublicPhotoFileUri)
+                @Html.ValidationMessageFor(model => model.PublicPhotoFileUri)
+                
+                <a data-id="uploadmanager" class="btnPattern submit leftNoPadding left">Add Local Photo</a>
+			</label>
+		</fieldset>	
+		<fieldset class="row left small">
+			<div class="profileImgThumb">
+				<img src="@Model.PublicPhotoFileUri" alt="@Model.FacilityName" onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'"/>
+			</div>
+		</fieldset>
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Summary Description
+                @Html.EditorFor(model => model.Exerpt)
+                @Html.ValidationMessageFor(model => model.Exerpt)
+			</label>
+		</fieldset>
+	</div>
+    <div id="facility-photo-container">
+        <div class="fieldRow">
+		    <fieldset class="row left full">
+			    <label class="smallCol">
+				    Facility Photos
+			    </label>
+		    </fieldset>
+	    </div>
+        @Html.EditorFor(model => model.FacilityPhotos)
+        <div class="fieldRow">
+		    <fieldset class="row left full">
+			    <a id="addmore" class="btnPattern submit leftNoPadding left">Add More</a>
+		    </fieldset>
+            <fieldset class="row left full">
+			    <a data-id="uploadmanager" class="btnPattern submit leftNoPadding left">Add Local Photos</a>
+		    </fieldset>
+	    </div>
+	</div>
+	<div class="fieldRow">
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Address
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+			</label>
+			<label class="smallCol">
+				Phone Number
+				@Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+			</label>
+		</fieldset>	
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Email
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+			</label>
+			<label class="smallCol">
+				Website
+				@Html.EditorFor(model => model.Website)
+                @Html.ValidationMessageFor(model => model.Website)
+			</label>
+		</fieldset>	
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Description
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+			</label>
+		</fieldset>
+	</div>		
+	<div class="fieldRow">
+		<fieldset class="row left small">
+			<label class="smallCol">
+				City
+				@Html.EditorFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+			</label>
+			<label class="smallCol">
+				State
+				@Html.EditorFor(model => model.State)
+                @Html.ValidationMessageFor(model => model.State)
+			</label>
+		</fieldset>	
+		<fieldset class="row left small">
+			<label class="smallCol">
+				Zip Code
+				@Html.EditorFor(model => model.ZipCode)
+                @Html.ValidationMessageFor(model => model.ZipCode)
+			</label>
+		</fieldset>
+		
+	</div>
+    <div class="fieldRow">
+		<fieldset class="row left small">
+            <div class="smallCol">
+			    <input type="button" class="btnPattern submit" id="btn_listing_geocode" value="Get location" />
+            </div>
+            <label id="locLat" class="smallCol">
+				Latitude
+                @Html.EditorFor(m => m.Latitude)
+                @Html.ValidationMessageFor(m => m.Latitude)
+            </label>
+            <label id="locLng" class="smallCol">
+                Longitude
+                @Html.EditorFor(m => m.Longitude)
+                @Html.ValidationMessageFor(m => m.Longitude)
+            </label>
+		</fieldset>
+        <fieldset class="row left full">
+            <!-- MAP container -->
+            <div id="map_canvas" class="mapWrapper"></div>
+        </fieldset>
+	</div>
+	<div class="fieldRow">
+		<fieldset class="row left small">
+			<span class="smallCol">Facility or Services</span>
+            @Html.EditorFor(model => model.TypeOfCareList)
+		</fieldset>
+        <fieldset class="row left typeOf small">
+			<div class="smallCol">
+				<span class="smallCol">Type of Listing</span>
+                @Html.RadioButtonForSelectList(model => model.ListingTypeGuid, Model.ListingTypeSelectList)
+                @Html.ValidationMessageFor(model => model.ListingTypeGuid)
+			</div>
+		</fieldset>
+	</div>
+	<div class="fieldRow">
+		<fieldset class="row right full">
+            @Html.ActionLink("Back to List", "List", "Listings", null, new { @class = "btnPattern submit leftNoPadding right"})
+            <input type="submit" value="@Model.SaveButtonText" class="btnPattern submit leftNoPadding right" />
+		</fieldset>
+	</div>
+}
+<!--/searchForm-->

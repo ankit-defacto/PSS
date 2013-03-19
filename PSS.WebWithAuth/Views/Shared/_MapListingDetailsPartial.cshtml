@@ -1,0 +1,26 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingDetailsViewModel
+@using PSS.WebWithAuth.Infrastructure;
+<!-- MAP container -->
+<div id="map_canvas" class="mapWrapper"></div>
+@Html.Resource(@<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry" type="text/javascript"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pssmaps.js")"></script>, "js")
+@Html.Resource(@<script type="text/javascript">
+    $(document).ready(function () {
+        var pssmaps = PSS.facilityMap;
+        // default icon is the alternative one when not in results view, change it
+        pssmaps.customIconAlt = PSS.ICONHOME;
+        pssmaps.initialize();        
+        @{
+            <text>
+                var address = { address: $.decodeHtml('@Model.GeocodeAddress'), 
+                title: $.decodeHtml('@Model.FacilityName'), 
+                photo: '@Model.PhotoUri', 
+                facilityGuid: '@Model.FacilityGuid',
+                lat: @Model.Geolocation.Latitude, 
+                lng: @Model.Geolocation.Longitude, 
+                openInfo: false };
+                pssmaps.codeAddress(address, pssmaps.calculateZoom);
+            </text>
+        }
+    });
+</script>, "js")

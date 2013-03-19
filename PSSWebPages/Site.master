@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head runat="server">
+	<title>Find your new home on Premier Senior Solutions</title>
+
+	<link href="~/Styles/Reset.css" rel="stylesheet" type="text/css" />
+	<link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="~/Styles/pss.css" rel="stylesheet" type="text/css" />
+
+	<asp:ContentPlaceHolder ID="HeadContent" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+
+<body>
+
+	<div class="page">
+		<div class="header"><span id="topMenu"><asp:HyperLink NavigateUrl="~/Default.aspx" ImageUrl="~/Images/menu-01-home.png" ToolTip="Home" runat="server" /><asp:HyperLink NavigateUrl="~/Search.aspx" ImageUrl="~/Images/menu-02-search.png" ToolTip="Search" runat="server" /><asp:HyperLink NavigateUrl="~/Sketches/CreateListing.aspx" ImageUrl="~/Images/menu-03-create.png" ToolTip="Create" runat="server" /><asp:HyperLink NavigateUrl="~/Sketches/CreateProfile.aspx" ImageUrl="~/Images/menu-04-profile.png" ToolTip="Profile" runat="server" /><asp:HyperLink NavigateUrl="~/Account/Listings/Listings.aspx" ImageUrl="~/Images/menu-05-listings.png" ToolTip="Listings" runat="server" /><asp:HyperLink NavigateUrl="~/About.aspx" ImageUrl="~/Images/menu-06-about.png" ToolTip="About" runat="server" /><asp:HyperLink NavigateUrl="~/Contact.aspx" ImageUrl="~/Images/menu-07-contact.png" ToolTip="Contact" runat="server" /></span></div>
+		<div class="main">
+			<asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+		</div>
+		<div class="clear"/>
+	</div>
+	<hr />
+	<div style="float:left;">
+		<p class="footer">Copyright &copy; 2012 Premier Senior Solutions</p>
+		<p class="footer">Website created by Mendatech LLC &amp; Concord Mfg LLC</p>
+	</div>
+	<div id="logindisplay" class="footer">
+		@Html.Partial("_LogOnPartial")
+	</div>
+
+
+<asp:ContentPlaceHolder ID="JavascriptCode" runat="server">
+</asp:ContentPlaceHolder>
+
+</body>
+
+</html>

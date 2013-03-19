@@ -1,0 +1,6 @@
+﻿@model PSS.WebWithAuth.ViewModels.FacilityPhotoViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@Html.HiddenFor(model => model.FacilityPhotoGuid)
+<img height="240" style="width: auto; max-width: 320;" src="@Model.PhotoUri" alt="@Model.FacilityPhotoGuid" 
+onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" />
+@Html.HiddenFor(model => model.FacilityGuid)

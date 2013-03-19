@@ -1,0 +1,43 @@
+﻿@model PSS.WebWithAuth.ViewModels.ClientCardInfoViewModel
+
+@if (Model.ClientCardGuid == new Guid())
+{
+    <p style="color:red;">No card informaton added</p>
+}
+else
+{     
+    <div class="mediumCol leftNoPadding">
+        <dl>
+            <dt>Card Type </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CardType)
+            </dd>
+            <dt>Holder Name </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CardHolderNameOnCard)
+            </dd>
+            <dt>Card Number </dt>
+            <dd>
+                xxxx-xxxx-xxxx-xxxx
+               @* @Html.HiddenFor(model=>model.CardNumber)*@
+            </dd>
+        </dl>
+    </div>
+    <div class="mediumCol leftNoPadding">
+        <dl>
+            <dt>Cvv Number </dt>
+            <dd>
+                 xxx
+               @* @Html.DisplayFor(model => model.CvvNumber)*@
+            </dd>
+            <dt>Expiry Month </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ExpMonth)
+            </dd>
+            <dt>Expiry Year </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ExpYear)
+            </dd>
+        </dl>
+    </div>
+}

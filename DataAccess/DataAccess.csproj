@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" xmlns:ov="http://www.concordmfg.com/MetadataOverview2.xsd">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B354D872-8E9F-4650-B51D-532193CA0CAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConcordMfg.PremierSeniorSolutions.WebService.DataAccess</RootNamespace>
+    <AssemblyName>ConcordMfg.PremierSeniorSolutions.WebService.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\ConcordMfg.PremierSeniorSolutions.WebService.DataAccess.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Wd|AnyCPU'">
+    <OutputPath>bin\Wd\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\ConcordMfg.PremierSeniorSolutions.WebService.DataAccess.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="DAEntities\LatLng.cs" />
+    <Compile Include="DAEntities\Offering.cs" />
+    <Compile Include="DataAccessExtensions.cs" />
+    <Compile Include="Gateways\ClientCardInfoGateway.cs" />
+    <Compile Include="Gateways\GatewayBase.cs" />
+    <Compile Include="IGateways\iClientCardInfoGateway.cs" />
+    <Compile Include="PredicateBuilder.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PSS2012.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSS2012.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessException.cs" />
+    <Compile Include="SQLServer\ErrorCodes.cs" />
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PSS2012.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PSS2012.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="IGateways\ICityStateZipGateway.cs" />
+    <Compile Include="Gateways\CityStateZipGateway.cs" />
+    <Compile Include="DAEntities\CityStateZipWithFacility.cs" />
+    <Compile Include="IGateways\ICityStateZipWithFacilityGateway.cs" />
+    <Compile Include="Gateways\CityStateZipWithFacilityGateway.cs" />
+    <Compile Include="IGateways\IClickGateway.cs" />
+    <Compile Include="Gateways\ClickGateway.cs" />
+    <Compile Include="IGateways\IClientGateway.cs" />
+    <Compile Include="Gateways\ClientGateway.cs" />
+    <Compile Include="IGateways\IClientAuditGateway.cs" />
+    <Compile Include="Gateways\ClientAuditGateway.cs" />
+    <Compile Include="IGateways\IFacilityGateway.cs" />
+    <Compile Include="Gateways\FacilityGateway.cs" />
+    <Compile Include="DAEntities\FacilityWithCityStateZip.cs" />
+    <Compile Include="IGateways\IFacilityWithCityStateZipGateway.cs" />
+    <Compile Include="Gateways\FacilityWithCityStateZipGateway.cs" />
+    <Compile Include="DAEntities\FacilityWithOffering.cs" />
+    <Compile Include="IGateways\IFacilityWithOfferingGateway.cs" />
+    <Compile Include="Gateways\FacilityWithOfferingGateway.cs" />
+    <Compile Include="IGateways\IFacilityAuditGateway.cs" />
+    <Compile Include="Gateways\FacilityAuditGateway.cs" />
+    <Compile Include="IGateways\IFacilityLocationCriteriaGateway.cs" />
+    <Compile Include="Gateways\FacilityLocationCriteriaGateway.cs" />
+    <Compile Include="IGateways\IFacilityOfferingGateway.cs" />
+    <Compile Include="Gateways\FacilityOfferingGateway.cs" />
+    <Compile Include="IGateways\IListingTypeGateway.cs" />
+    <Compile Include="Gateways\ListingTypeGateway.cs" />
+    <Compile Include="IGateways\IOfferingGateway.cs" />
+    <Compile Include="Gateways\OfferingGateway.cs" />
+    <Compile Include="DAEntities\OfferingWithFacility.cs" />
+    <Compile Include="IGateways\IOfferingWithFacilityGateway.cs" />
+    <Compile Include="Gateways\OfferingWithFacilityGateway.cs" />
+    <Compile Include="IGateways\IPaymentInfoGateway.cs" />
+    <Compile Include="Gateways\PaymentInfoGateway.cs" />
+    <Compile Include="IGateways\IPaymentInfoAuditGateway.cs" />
+    <Compile Include="Gateways\PaymentInfoAuditGateway.cs" />
+    <Compile Include="IGateways\IFacilityPhotoGateway.cs" />
+    <Compile Include="Gateways\FacilityPhotoGateway.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PSS2012.dbml.layout">
+      <DependentUpon>PSS2012.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties IsDataAccessProject="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

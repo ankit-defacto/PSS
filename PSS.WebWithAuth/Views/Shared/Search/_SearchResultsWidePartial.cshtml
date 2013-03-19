@@ -1,0 +1,38 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@using PSS.WebWithAuth;
+@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry" type="text/javascript"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pssmaps.js")"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/listings.js")"></script>, "js")
+@if (Model.CurrentFilter != null)
+{
+    if ((Model.CurrentFilter.CityStateZipEmpty &&
+        Model.CurrentFilter.TypeOfCareFilter.Count(tc => tc.Checked) == 0) || Html.CurrentActionEquals("ShowFacilitiesNearYou"))
+    {
+        <p>Elder care not found near your location</p>
+    }
+    else if (Model.CurrentFilter != null &&
+        Model.CurrentFilter.SearchType == Enums.SearchTypes.Filtered && !Model.CurrentFilter.CityStateZipEmpty)
+    {
+        <p>No results found for your query. Do you want to see facilities nearby?</p>             
+        <div id="widesearch" class="smallCol leftNoPadding">
+            @Html.ActionLink("Click to see more facilities nearby", "SearchResultsWide", "Search",
+                 Helpers.SeoSearchFilterRouteCreate(Model.CurrentFilter),
+                     new Dictionary<string, object> { { "class", "btnPattern submit btnWide" } })
+        </div>
+        <input type="hidden" id="cityfilter" value="@Model.CurrentFilter.CityFilter" />
+        <input type="hidden" id="statefilter" value="@Model.CurrentFilter.StateFilter" />
+        <input type="hidden" id="zipfilter" value="@Model.CurrentFilter.ZipFilter" />
+        <input type="hidden" id="hidden_lat" value="0" />
+        <input type="hidden" id="hidden_lng" value="0" />
+        @Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pss.search.wide.js")"></script>, "js")
+    }
+    else
+    {
+        <p>Elder care matching your criteria not found</p>
+    }
+}
+else
+{
+    <p>Search criteria not found</p>
+}

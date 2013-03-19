@@ -1,0 +1,15 @@
+﻿@model ConcordMfg.PremierSeniorSolutions.WebService.BusinessEntities.AccountViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@using (Html.BeginForm("AccountToggle", "Account", FormMethod.Post, new { @class = "" }))
+{
+    @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+    string buttonText = "Pause";
+    if (Model.PauseAccount)
+    {
+        buttonText = "Activate";
+    }
+    
+    @: <input type="submit" value="@buttonText" class="btnPattern submit" />    
+    @Html.HiddenFor(m => m.PauseAccount)
+    @Html.HiddenFor(m => m.ClientGuid)
+}

@@ -1,0 +1,44 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@using PagedList.Mvc
+<div class="leftSide">
+	<ul class="tags">
+		<li class="filterLabel">
+			Search filter:
+		</li>
+		@if (Model.CurrentFilter.CityStateZipEmpty)
+        {
+            <li class="tag"><span>All</span></li>
+        }
+        else
+        {
+            @Html.SearchFilterItem(@Model.CurrentFilter.CityFilter)
+            @Html.SearchFilterItem(@Model.CurrentFilter.StateFilter)
+            @Html.SearchFilterItem(@Model.CurrentFilter.ZipFilter)
+        }
+	</ul>			
+	<ul class="tags">
+		<li class="filterLabel">
+			Checked:
+		</li>
+		@if (Model.CurrentFilter.TypeOfCareFilter.Count(c => c.Checked) > 0)
+        {
+            foreach (var chk in @Model.CurrentFilter.TypeOfCareFilter)
+            {
+                if (chk.Checked)
+                {
+                    <li class="tag"><span>@chk.TypeOfCareName</span></li>
+                }
+            }
+        }
+        else
+        {
+            <li class="tag"><span>None</span></li>
+        }
+	</ul>			
+	<div class="smallCol leftNoPadding">
+        @Html.ActionLink("Edit Your Search", "Search", "Search", 
+            Helpers.SeoSearchFilterRouteCreate(Model.CurrentFilter), 
+                new Dictionary<string, object> { { "class", "btnPattern submit" } })
+	</div>
+</div><!--/leftSide-->

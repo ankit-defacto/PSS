@@ -1,0 +1,75 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingTypeViewModel
+@{
+    ViewBag.Title = "Edit listingType";
+	Layout = null;
+}
+
+<style type="text/css">
+    #pop-up-edit .quote {width:600px !important;}
+    #pop-up-edit .clearfix{width:600px !important;}
+    #pop-up-edit .page .wrap {min-height:300px !important;}
+    #pop-up-edit .formArea{min-height:220px !important;}
+</style>
+
+<script type="text/ecmascript">
+    $('#EditListingType').submit(function () {
+        if ($(this).valid()) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/admin/SaveListingType', //url your posting to
+                data: $('#EditListingType').serialize(), //serialize the data in your form
+                success: function (result) {
+                    if (result.msg === 'ok') {
+                        //alert("Updated Successfully");
+                        $('#pop-up-edit').dialog('close');
+                        $("#list").setGridParam({ sortname: 'ClientID', sortorder: 'desc' }).trigger("reloadGrid");
+                    }
+                    else {
+                        $('#error').html(result.msg);
+                    }
+                }
+            });
+            $('#error').html('Please correct errors and try again');
+        }
+        return false;
+    });
+</script>
+
+@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+@Html.RenderResources("js")
+<section class="page clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Edit Listing Type
+		</h1>
+		<div class="clearfix">
+		<div class="formArea clearfix">
+        @using (Html.BeginForm("SaveListingType", "Admin", FormMethod.Post, new { @class = "searchForm editForm", id = "EditListingType" }))
+        {
+            @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+            @Html.ValidationSummary(true)
+            <div id="error" style="color:Red; padding:0 0 25px 0;"></div>
+            @Html.HiddenFor(model => model.ListingTypeGuid)
+	        <fieldset class="row left small">
+		        <label class="smallCol">
+                    Enter ListingType Name
+                    @Html.EditorFor(model => model.ListingTypeName)
+                    @Html.ValidationMessageFor(model => model.ListingTypeName)
+		        </label>
+		        <label class="smallCol">
+                    Enter Price
+                    @Html.EditorFor(model => model.ListingTypePrice)
+                    @Html.ValidationMessageFor(model => model.ListingTypePrice)
+		        </label>				
+                    <label class="smallCol">
+				        <button type="submit" class="btnPattern submit leftNoPadding left"  >Save</button>
+		        </label>
+	        </fieldset>
+        }
+		</div>
+        </div>
+	</div>
+</section><!--/page-->

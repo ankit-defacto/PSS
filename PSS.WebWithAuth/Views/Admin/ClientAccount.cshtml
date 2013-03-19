@@ -1,0 +1,229 @@
+﻿@model PSS.WebWithAuth.ViewModels.AccountWithListingsViewModel
+@{
+    ViewBag.Title = "PSS | View Account";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using PSS.WebWithAuth.Infrastructure
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+
+<style type="text/css">
+    #adminControls dl
+    {
+        clear: right;
+        color: #333333;
+        margin-left: 50px;
+        width: 250px;
+        margin-top: 20px;
+    }
+    #bt_waiverSave
+    {
+        margin-right: 10px;
+    }
+    
+    #AccountBalance
+    {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #FEFAEF;
+    border: 1px solid #C79754;
+    border-radius: 5px 5px 5px 5px;
+    color: #333333;
+    font-size: 16px;
+    padding: 5px 20px;
+    width: 100%;
+    }
+</style>
+<script type="text/javascript">
+    function show() {
+        document.getElementById('bt_waiverEdit').style.display = 'none';
+        document.getElementById('id_waiver').style.display = 'none';
+        document.getElementById('id_freedays').style.display = 'none';
+        document.getElementById('id_accBalance').style.display = 'none';
+        document.getElementById('bt_waiverSave').style.display = '';
+        document.getElementById('bt_waiverCancel').style.display = '';
+        document.getElementById('id_waiverEdit').style.display = '';
+        document.getElementById('id_freedaysEdit').style.display = '';
+        document.getElementById('id_accBalanceEdit').style.display = '';
+    }
+    function hide() {
+        document.getElementById('bt_waiverEdit').style.display = '';
+        document.getElementById('id_waiver').style.display = '';
+        document.getElementById('id_freedays').style.display = '';
+        document.getElementById('id_accBalance').style.display = '';
+        document.getElementById('bt_waiverSave').style.display = 'none';
+        document.getElementById('bt_waiverCancel').style.display = 'none';
+        document.getElementById('id_waiverEdit').style.display = 'none';
+        document.getElementById('id_freedaysEdit').style.display = 'none';
+        document.getElementById('id_accBalanceEdit').style.display = 'none';
+    }
+    $(function () {
+        $('#frm1').submit(function () {
+            $.post('@Url.Action("Search", "Home")', { LastName: $("#LastName").val(),
+                UserName: $("#UserName").val(),
+                EmailAddress: $("#EmailAddress").val()
+            }, function (data) {
+
+                alert(data)
+            });
+            return false;
+        });
+    });
+</script>
+
+<section class="page account clearfix">
+<div class="wrap clearfix">
+	<h1 class="quote">
+		@Model.ClientName
+	</h1>
+	<div class="clearfix"></div>
+	<div class="formArea clearfix">
+		<div class="fullW noTop">
+			<h2>View Account</h2>
+			<div class="right">
+                @Html.ActionLink("Edit Account", "EditClient", new { clientGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+			</div>
+		</div>
+		<div class="mediumCol leftNoPadding">
+			<dl>
+				<dt>
+					Company Name
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.ClientName)
+				</dd>
+				<dt>
+					Phone Number
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.PhoneNumber)
+				</dd>
+				<dt>
+					Email
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Email)
+				</dd>
+                <dd>
+                    <div>
+                        account is: @Html.DisplayFor(m => m.PauseAccount)
+                    </div>
+                </dd>
+			</dl>
+		</div>
+		<div class="mediumCol leftNoPadding">
+			<dl>
+				<dt>
+					Address
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Address)
+				</dd>
+				<dt>
+					City
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.City)
+				</dd>
+				<dt>
+					State
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.State)
+				</dd>
+				<dt>
+					Zip Code
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.ZipCode)
+				</dd>
+			</dl>
+		</div>
+        
+        <div id="adminControls" class="fullW">
+
+			<h2>Waiver</h2>
+        @using (Ajax.BeginForm("ClientAccount", "Admin", new AjaxOptions
+                        {
+                            UpdateTargetId = "WaiverForm",
+                            InsertionMode = InsertionMode.Replace,
+                            OnBegin = "ajaxValidate",
+                            OnSuccess = "getGbPostSuccess",
+                            OnFailure = "showFaliure"
+                        }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.ClientGuid)
+            @Html.HiddenFor(model => model.ClientID)
+            @Html.HiddenFor(model => model.ClientName)
+            @Html.HiddenFor(model => model.PhoneNumber)
+            @Html.HiddenFor(model => model.Address)
+            @Html.HiddenFor(model => model.CityStateZipGuid)
+            @Html.HiddenFor(model => model.City)
+            @Html.HiddenFor(model => model.State)
+            @Html.HiddenFor(model => model.ZipCode)
+            @Html.HiddenFor(model => model.PaymentInfoGuid)
+            @Html.HiddenFor(model => model.PaymentInfoID)
+            <div class="right">
+                <a id="bt_waiverEdit" class="btnPattern submit leftNoPadding left" onclick="show()">Edit Wavier</a>
+                <input type="submit" id="bt_waiverSave" class="btnPattern submit leftNoPadding left" style="display:none" value="Update" />                
+                <a id="bt_waiverCancel" class="btnPattern submit leftNoPadding left" style="display:none" onclick="hide()">Cancel</a>
+            </div>
+            <fieldset class="fullW">
+                <label class="smallCol">
+                    Waive Current Month Payment
+                    <div id="id_waiver">@if (Model.IsWaiverd == true)
+                                        {<text>Yes</text>}
+                                        else
+                                        {<text>No</text>}</div>    
+                    <div id="id_waiverEdit" style="display:none">@Html.EditorFor(model => model.IsWaiverd)
+                    @Html.ValidationMessageFor(model => model.IsWaiverd)</div>
+                </label>
+                <label class="smallCol">
+                    Free Days
+                    <div id="id_freedays">@Html.DisplayFor(model => model.FreeDays)</div>
+                    <div id="id_freedaysEdit" style="display:none">@Html.EditorFor(model => model.FreeDays)
+                    @Html.ValidationMessageFor(model => model.FreeDays)</div>
+                </label>
+                <label class="smallCol">
+                    Account Balance
+                    <div id="id_accBalance">@Html.DisplayFor(model => model.AccountBalance)</div>
+                    <div id="id_accBalanceEdit" style="display:none">@Html.EditorFor(model => model.AccountBalance)
+                    @Html.ValidationMessageFor(model => model.AccountBalance)</div>
+                </label>
+            </fieldset>						
+        }
+        </div>
+		<div class="fullW">
+			<h2>Payment Card Details</h2>
+			<div class="right">
+            @if (Model.clientCardInfoVM.ClientCardGuid == new Guid())
+            {
+                @Html.ActionLink("Add Payment Card", "ClientCardInfo", new { ClientGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+            }
+            else
+            {               
+                @Html.ActionLink("Edit Payment Card", "EditClientCardInfo", new { ClientGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+            }
+			</div>
+		</div>
+		<div class="fullW">
+			@Html.Partial("_ClientCardInfo", Model.clientCardInfoVM)
+            <div class="clearfix"></div>
+		</div>
+		<div class="fullW">
+			<h2>Listings</h2>
+		</div>
+		<div class="fullW">
+			<div class="right">
+            @*@if (Model.AccountListings.Count > 0)
+            {
+                @Html.ActionLink("Edit Listings", "Edit", new { accountGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+            }*@
+			</div>
+			@Html.Partial("_adminAccountListingsPartial", Model.AccountListings)
+		</div><!--/fullW-->
+	</div>
+</div>
+</section><!--/page-->

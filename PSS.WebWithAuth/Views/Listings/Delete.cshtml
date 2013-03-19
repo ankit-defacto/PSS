@@ -1,0 +1,33 @@
+﻿@model ConcordMfg.PremierSeniorSolutions.WebService.BusinessEntities.ListingViewModel
+@{
+    ViewBag.Title = "Delete listing";
+}
+@using PSS.WebWithAuth.Infrastructure
+<section class="page details clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Delete listing
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+            <h2>Are you sure you want to delete this?</h2>
+        @using (Html.BeginForm("Delete", "Listings", FormMethod.Post, new { @class = "searchForm editForm" }))
+        {
+            @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+            <h2>@Html.DisplayFor(model => model.FacilityName)</h2>
+	        <div class="smallCol">
+		        <div class="detailImg">
+                    <img alt="@Html.DisplayFor(model => model.FacilityName)" 
+                        src="@Html.DisplayFor(model => model.PublicPhotoFileUri)" 
+                            title="@Html.DisplayFor(model => model.FacilityName)"
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /> 
+		        </div>
+	        </div>
+            <fieldset class="row left submitArea small">
+                @Html.ActionLink("Back to list", "List", null, new { @class = "btnPattern submit leftNoPadding" })
+                <input type="submit" value="Delete" class="btnPattern submit remove leftNoPadding left" />
+			</fieldset>
+        }
+		</div>
+	</div>
+</section><!--/page-->

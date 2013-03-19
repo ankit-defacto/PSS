@@ -1,0 +1,40 @@
+﻿@model PSS.WebWithAuth.ViewModels.LogOnModel
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Resource(@<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#signup').click(function () {
+                            $('#navbar a:first').click();
+                        });
+                    });
+</script>, "js")
+<section class="page home clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Your Guide To Local Assisted Living Options
+		</h1>
+		<div class="imgWrapper">
+			<img src="@Url.Content("~/Content/i/couple2.png")" alt="Your Guide To Local Assisted Living Options">
+		</div>
+		<div class="clearfix"></div>
+            <div class="formArea clearfix">
+		    <p>Finding new customers in the elder care industry can be extremely difficult.  
+    At Premier Senior Solutions we understand the frustrations and limitations that care providers are faced with.  
+    Needing to advertise and attract new customers, but faced with options that don’t allow contact information or 
+    enough space to properly present your company. 
+    At Premier we take a different approach.  
+    We allow you to create your own listing page as you would like it and to edit it as often as you like.  
+    You are in control of your own marketing with us.  
+    Place as many photos, as much description and as much contact information as you wish. 
+    You don't even need a web site, your page can have all of the information needed to attract new customers.  
+    We allow you to even pause your account so you are not charged to advertise when you don't require more customers.  
+    Our prices are competitive and set to save you money!
+    </p>
+    <p>Sign up today and start maximizing your exposure for a minimum amount of money!</p>
+        <button id="signup" type="submit" class="btnPattern submit right">Sign Up</button>
+	    </div>
+    </div>
+</section><!--/page-->

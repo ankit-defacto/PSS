@@ -1,0 +1,34 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@{
+    ViewBag.Title = "PSS | Find the right senior care home for you with Premier Senior Solutions ::: Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PSS.WebWithAuth.Infrastructure;
+@using PagedList.Mvc
+@using PagedList
+<section class="page clearfix">
+    <div class="wrap clearfix">
+	    <h1 class="quote">
+		    Search Results
+	    </h1>
+	    <div class="clearfix"></div>
+        <div class="formArea clearfix">
+            @Html.Partial("Search/_SearchFilterPartial", Model)
+            <div class="fullW">
+                @Html.Partial("Search/_SearchResultsPartial", Model)
+                @if (Model.CurrentResults.Count > 0)
+                {
+                    @Html.PagedListPager(Model.CurrentResults,
+                        page => Url.SeoSearchFilterPagerAction(Model.CurrentFilter.SearchType == Enums.SearchTypes.Filtered ? "SearchResults" : "SearchResultsWide", "Search", Model.CurrentFilter.SetPage(page)),
+                    new PagedListRenderOptions { 
+                        ClassToApplyToFirstListItemInPager = "", 
+                        ClassToApplyToLastListItemInPager = "",
+                        MaximumPageNumbersToDisplay = 5,
+                        LinkToPreviousPageFormat = "&laquo;",
+                        LinkToNextPageFormat = "&raquo;"
+                    })
+                }		
+            </div><!--/fullW-->
+        </div>
+    </div>
+</section>

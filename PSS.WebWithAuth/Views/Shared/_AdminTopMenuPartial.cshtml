@@ -1,0 +1,8 @@
+﻿@using PSS.WebWithAuth.Infrastructure;
+<ul class="topM clearfix">
+@Html.MenuItem("admin", new string[] { "Clients Account"}, "Clients", Href("~/Admin/AccountList"), Enums.MenuItemViewModes.Authenticated)
+@Html.MenuItem("admin", new string[] { "Listingtypes" }, "Listing Types", Href("~/admin/Listingtypes"), Enums.MenuItemViewModes.Authenticated)
+@Html.MenuItem("admin", new string[] { "index", "EditPassowrd" }, "Change Password", Href("~/admin/EditPassword"), Enums.MenuItemViewModes.Authenticated)
+@*@Html.MenuItem("listings", new string[] { "list", "index", "edit", "see", "view", "delete", "create" }, "Listing", Href("~/listings/list"), Enums.MenuItemViewModes.Authenticated)*@
+@*@Html.MenuItem("home", new string[] { "contact" }, "Contact", Href("~/contact"), Enums.MenuItemViewModes.All)*@
+</ul><!--/topM-->

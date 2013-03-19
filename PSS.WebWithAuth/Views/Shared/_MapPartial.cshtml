@@ -1,0 +1,64 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@using PSS.WebWithAuth;
+@using PSS.WebWithAuth.Infrastructure;
+@using System.Collections.Generic;
+@Html.Resource(@<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry" type="text/javascript"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pssmaps.js")"></script>, "js")
+@Html.Resource(@<script type="text/javascript">
+    $(document).ready(function () {
+        var pssmaps = PSS.facilityMap;
+        // dynamically adding map container
+        var $form = $('div[class^="formArea clearfix"]');// <!--/mapWrapper-->
+        @{
+            string mapCanvas = "<div id=\"map_canvas\" class=\"mapWrapper\"></div>";
+            if (Html.CurrentActionEquals("ShowFacilitiesNearYou"))
+            {
+                @:$form.append($.decodeHtml('@mapCanvas'));
+            }
+            else
+            {
+                @:$form.prepend($.decodeHtml('@mapCanvas'));
+            }
+        }
+        pssmaps.initialize();
+        @{
+            <text>
+                // define array of locations and push locations to show markers later
+                var addresses = [];
+            </text>
+            foreach (var result in Model.CurrentResults)
+            {
+                <text>
+                    addresses.push({ address: $.decodeHtml('@result.GeocodeAddress'), 
+                    title: $.decodeHtml('@result.FacilityName'), 
+                    photo: '@result.PhotoUri', 
+                    facilityGuid: '@result.FacilityGuid',
+                    lat: @result.Geolocation.Latitude, 
+                    lng: @result.Geolocation.Longitude, 
+                    openInfo: false });
+                </text>
+            }
+            // add icon with current location in search view            
+            // don't add this on search view
+            if(Html.CurrentActionEquals("SearchResultsWide")) 
+            {
+                <text>
+                    // build JSON object to supply geocoder and infowindow with data 
+                    addresses.push({address: '@Model.CurrentFilter.CityStateZipGeocodeFormatted', 
+                    title: 'Your location', openInfo: false, lat: 0, lng: 0});
+                </text>
+            }
+            if(Html.CurrentActionEquals("ShowFacilitiesNearYou")) 
+            {
+                <text>
+                    pssmaps.browserLocation = { lat: @Model.CurrentFilter.Latitude, lng: @Model.CurrentFilter.Longitude };
+                    // add browser location marker if present
+                    pssmaps.putBrowserGeolocation();
+                </text>
+            }                    
+        }
+        for (var i = 0; i < addresses.length; i++) {
+            pssmaps.codeAddress(addresses[i], pssmaps.calculateZoom);
+        }
+    });
+</script>, "js")

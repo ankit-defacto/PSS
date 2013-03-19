@@ -1,0 +1,29 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchFilterViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "Search | Your Guide To Local Assisted Living Options";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pss.search.js")"></script>, "js")
+<section class="page home clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Your Guide To Local Assisted Living Options
+		</h1>
+		<div class="imgWrapper">
+			<img src="@Url.Content("~/Content/i/couple2.png")" alt="Your Guide To Local Assisted Living Options">
+		</div>
+		<div class="clearfix"></div>
+		@Html.Partial("Search/_SearchFormPartial", Model)
+        <div id="eldercarenearyou">
+            <div class="fullW">
+                @Html.Action("ShowFacilitiesNearYou", "Search")
+            </div>
+        </div>
+	</div>
+</section><!--/page-->
+@if (Model.GeolocationStatus == Enums.GeolocationStates.ResolveNotPossible)
+{
+    // todo: define logic to handle this situation
+}
+<input id="geolocready" type="hidden" value="@Model.GeolocationStatus" />

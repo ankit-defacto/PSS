@@ -1,0 +1,167 @@
+﻿
+#Banner {
+	margin-top: 40px;
+}
+
+.Header
+{
+	padding: 20px 10px;
+	text-align: center;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	border-bottom: 1px solid black;
+	/*background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	-webkit-background-clip: padding;*/
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.blueBG {
+	background-color: LightBlue;
+}
+
+.greenBG {
+	background-color: LightGreen;
+}
+
+.greyBG {
+	background-color: #EBEBEB;
+}
+
+.newBlueBG {
+	background-color: #5FBDB7;
+}
+
+.border {
+	border: 1px solid black;
+}
+
+.roundedBorder {
+	border: 2px solid black;
+	border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+}
+
+.buttonText {
+	font-size: 120%;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+	color: #222222;
+}
+
+.roundedRectangle {
+	width: 160px;
+	height: 50px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	padding-top: 24px;
+	text-align: center;
+}
+
+.fixedWidthMedContainer {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.footnote {
+	margin-top: 8px;
+	text-align: center;
+	font-size: 90%;
+}
+
+.fullheight {
+	height: 840px;
+}
+
+.column {
+	float: left;
+}
+
+.blank {
+	clear: both;
+}
+
+/******************/
+
+#paymentButton {
+	width: 180px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 20px;
+}
+
+#submitButton {
+	width: 140px;
+	margin-top: 16px;
+	margin-bottom: 8px;
+	margin-left: 20px;
+}
+
+.button {
+	appearance: button;
+	box-shadow: 1px 1px 3px;
+/*	-moz-box-shadow: 1px 1px 3px;
+	-webkit-box-shadow: 1px 1px 3px;*/
+}
+
+.sidespacing {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#checklistContainer h4 {
+	margin-top: 16px;
+}
+
+#checklistContainer div {
+	margin-top: 6px;
+}
+
+.indent1 {
+	margin-left: 24px;
+}
+
+.indent2 {
+	margin-left: 48px;
+}
+
+.indent3 {
+	margin-left: 72px;
+}
+
+.topspacing1 {
+	margin-top: 12px;
+}
+
+.topspacing2 {
+	margin-top: 24px;
+}
+
+.topspacing3 {
+	margin-top: 36px;
+}
+
+.bottomspacing1 {
+	padding-bottom: 12px;
+}
+
+.bottomspacing2 {
+	padding-bottom: 24px;
+}
+
+.bottomspacing3 {
+	padding-bottom: 36px;
+}

@@ -1,0 +1,77 @@
+﻿@model PSS.WebWithAuth.ViewModels.ClientCardInfoViewModel
+
+@{
+    ViewBag.Title = "EditClientCardInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using PSS.WebWithAuth.Infrastructure
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+<section class="page clearfix">
+<div class="wrap clearfix">
+<h1 class="quote">
+	Edit Payment Card Information
+</h1>
+<div class="clearfix"></div>
+<div class="formArea clearfix">
+@using (Html.BeginForm("EditClientCardInfo", "Admin", FormMethod.Post, new { @class = "searchForm editForm" }))
+{
+    @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ClientGuid)
+    @Html.HiddenFor(model => model.ClientCardGuid)
+			<fieldset class="row left small" style="width:300px;">
+				<label class="smallCol">
+				 Card Type              
+                  @*  <label for="Visa">Visa</label>
+                   @Html.RadioButtonFor(model => model.CardType, "Visa", new { id = "Visa", @Checked = true }) 
+                    <label for="MasterCard">Master card</label>
+                   @Html.RadioButtonFor(model => model.CardType, "Master Card", new { id = "MasterCard" })
+                                                    
+                    @Html.ValidationMessageFor(model => model.CardType) *@  
+                    @Html.DropDownListFor(m => m.CardType, @ViewBag.cardType as SelectList, new { @class="input"})
+                 <br /> 
+				</label>
+				<label class="smallCol">
+					Enter Cardholder Name on Card 
+					@Html.EditorFor(model => model.CardHolderNameOnCard)
+                    @Html.ValidationMessageFor(model => model.CardHolderNameOnCard)
+				</label>
+				<label class="smallCol">
+					Credit Card Number
+					@Html.PasswordFor(model => model.CardNumber)
+                    @Html.ValidationMessageFor(model => model.CardNumber)
+				</label>
+			</fieldset>
+						
+			<fieldset class="row left small" style="width:300px;">
+				<label class="smallCol">
+					Cvv Code
+					@Html.PasswordFor(model => model.CvvNumber)
+                    @Html.ValidationMessageFor(model => model.CvvNumber)
+				</label>
+				<label class="smallCol">
+					Expiry Month
+					@*@Html.EditorFor(model => model.ExpMonth)*@
+                      @Html.DropDownListFor(m => m.ExpMonth, @ViewBag.expiryMonth as SelectList, new { @class = "input" })
+                    @Html.ValidationMessageFor(model => model.ExpMonth)
+				</label>
+				<label class="smallCol">
+			        Expiry Year
+					@*@Html.EditorFor(model => model.ExpYear)*@
+                    @Html.DropDownListFor(m => m.ExpYear, @ViewBag.expiryYear as SelectList, new { @class = "input" })
+                    @Html.ValidationMessageFor(model => model.ExpYear)
+				</label>
+              
+			</fieldset>
+			<fieldset class="row left submitArea small" style="padding-right:500px;">
+				<button type="submit" class="btnPattern submit right">Update</button>
+                @Html.ActionLink("Back", "ClientAccount", "Admin", new { clientGuid = Model.ClientGuid }, new { @class = "btnPattern submit right" })
+			</fieldset>
+}
+		</div>
+	</div>
+</section>
+<!--/page-->
+

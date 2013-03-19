@@ -1,0 +1,148 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingViewModelEdit
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "View Listing || Change Listing Price";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@Html.Resource(@<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.descriptions').shorten({ "showChars": 100 });
+                    });
+                    function show() {
+                        document.getElementById('showChangeButton').style.display = 'none';
+                        document.getElementById('div_setPrice').style.display = '';
+                    }
+                    function hide() {
+                        document.getElementById('div_setPrice').style.display = 'none';
+                        document.getElementById('showChangeButton').style.display = '';
+                    }
+</script>, "js")
+
+<script>
+    function returnFalse() {
+        var price = document.getElementById('Price');
+        if (price.value != null && price.value != "") {
+            if ((/^\d*(?:\.\d{0,2})?$/.test(price.value))) {
+                return true;
+            }
+        }
+        price.style.borderColor = "red";
+        return false;
+    }
+</script>
+
+<section class="page details clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Listing View
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+        
+        @using (Html.BeginForm("SetListingPrice", "Admin", FormMethod.Post, new { id = "form1" }))
+        {
+            @Html.HiddenFor(model => model.FacilityGuid, new { id = "FacilityGuid" })
+            @Html.HiddenFor(model => model.ActionName)
+            @Html.HiddenFor(model => model.SaveButtonText)
+            <div class="smallCol">
+                @Html.ActionLink("Back to Account", "ClientAccount", "Admin", new { clientGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding" })
+			</div>
+            <div class="smallCol">
+               @* @Html.ActionLink("Change Price", "SetListingPrice", new { FacilityGuid = Model.FacilityGuid }, new { @class = "btnPattern submit leftNoPadding" })*@
+                
+			</div>
+			<h2>@Html.DisplayFor(model => model.FacilityName)</h2>
+			<div class="mediumCol">
+				<div class="detailImg">
+                    <img alt="@Html.DisplayFor(model => model.FacilityName)" 
+                        src="@Model.PublicPhotoFileUri" 
+                            title="@Html.DisplayFor(model => model.FacilityName)"
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /> 
+				</div>
+				<dl>
+					<dt>
+						Summary
+					</dt>
+					<dd class="descriptions">
+						@Html.DisplayFor(model => model.Exerpt)
+					</dd>
+				</dl>
+                <dl>
+					<dt>
+						Description
+					</dt>
+					<dd class="descriptions">
+						@Html.DisplayFor(model => model.Description)
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						Facility or Services
+					</dt>
+					@Html.DisplayFor(model => model.TypeOfCareList)
+				</dl>
+                <dl>
+                     <dt>Type of Listing</dt>
+                     
+                     @Html.DisplayFor(model => model.ListingTypeName)  
+                </dl>
+                <dl>
+                     <dt>Billing Price</dt>
+                     <dd id="showChangeButton">                     
+                        $@Html.DisplayFor(model => model.Price)
+                        <button id="id_setPrice" class="btnPattern leftNoPadding" type="button" onclick="show()">Change Price</button>                     
+                     </dd>
+                     <dd id="div_setPrice" style="display:none;">
+                         @Html.EditorFor(model => model.Price)
+                         <button id="id_save" type="submit" class="btnPattern submit leftNoPadding" onclick="return returnFalse()">Save</button>
+                         <button id="id_cancel" class="btnPattern submit leftNoPadding" type="button" onclick="hide()">Cancel</button>      
+                     </dd>         
+                </dl>
+                <dl>
+                    <dt>
+                        Contact
+                    </dt>
+                    <dd>
+                        @Html.LabelFor(model => model.PhoneNumber) 
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+                    <dd>
+                        @Html.LabelFor(model => model.Email) 
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dd>
+                        @Html.LabelFor(model => model.Website)
+                        <a href="@Model.Website">@Html.DisplayFor(model => model.Website)</a>
+                    </dd>
+                </dl>
+				<dl>
+					<dt>
+						Location
+					</dt>
+					<dd>
+						@Html.DisplayFor(model => model.Address)
+					</dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.City)
+                        ,&nbsp;@Html.DisplayFor(model => model.State)
+                        &nbsp;@Html.DisplayFor(model => model.ZipCode)
+                    </dd>
+				</dl>
+			</div>
+                         
+			<div class="mediumCol slider">                    
+				<div id="sliderWrapper">
+                    <ul>
+                        @foreach (var photo in Model.FacilityPhotos)
+                        {
+                            <li><img src="@photo.PhotoUri" alt="@photo.FacilityPhotoGuid" title="Image" 
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /></li>
+                        }
+                    </ul>
+				</div>
+			</div>
+        }
+		</div>
+	</div>
+</section>
+<!--/page-->

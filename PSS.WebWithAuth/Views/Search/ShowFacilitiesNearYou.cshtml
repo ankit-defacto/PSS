@@ -1,0 +1,7 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    Layout = null;
+}
+@Html.Resource(@<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry" type="text/javascript"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="@Url.Content("~/Content/js/pssmaps.js")"></script>, "js")

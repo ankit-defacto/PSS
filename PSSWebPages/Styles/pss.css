@@ -1,0 +1,93 @@
+﻿body {
+}
+
+.header {
+	width: 820px;
+	margin: 0;
+	padding: 0;
+}
+
+/*#topMenu {
+	margin-left: 11px;
+}*/
+
+img {
+	line-height: normal;
+}
+
+label, input {
+	display: block;
+}
+
+/* COLUMNS
+-----------------------------------*/
+
+.homeLeftColumn {
+	width: 280px;
+	min-height: 200px;
+	float: left;
+}
+
+.homeRightColumn {
+	width: 500px;
+	min-height: 200px;
+	float: left;
+}
+
+.leftColumnBalanced {
+	width: 410px;
+	float: left;
+}
+
+.rightColumnBalanced {
+	width: 410px;
+	float: left;
+}
+
+.DetailedSearchControl
+{
+	 background-color:Silver;
+	 width:1000px;
+	 padding:10px;
+}
+
+.LabelDiv
+{
+	color:Green;
+	width:50px;
+	display:inline;
+}
+
+.BoxDiv
+{
+	width:50px;
+	display:inline;
+	float:left;
+}
+
+#topMenu a {
+	margin: 0px;
+	padding: 0px;
+}
+
+/***********************************/
+
+#coupleBanner {
+	background-image: url(/images/bg-couple-820.png);
+	width: 820px;
+	height: 276px;
+}
+
+#homepageContent {
+	background-image: url(/images/bg-inner-body-820.png);
+	background-repeat: no-repeat;
+	width: 820px;
+	min-height: 590px;
+}
+
+#contactContent {
+	background-image: url(/images/bg-inner-body-820-contact.png);
+	background-repeat: no-repeat;
+	width: 820px;
+	height: 591px;
+}

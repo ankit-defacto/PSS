@@ -1,0 +1,105 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingDetailsViewModel
+@{
+    ViewBag.Title = "PSS | Find the right senior care home for you with Premier Senior Solutions ::: " + Model.FacilityName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PSS.WebWithAuth.Infrastructure
+<section class="page details clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Listing Details
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+            @Html.Partial("_SocialSharingPartial")
+			<div class="smallCol">
+                @Html.ActionLink("Edit Your Search", "Search", "Search",
+                    Helpers.SeoSearchFilterRouteCreate(Model.CurrentFilter),
+                        new Dictionary<string, object> { { "class", "btnPattern submit leftNoPadding" }})
+			</div>
+			<div class="mediumCol">
+                @{
+                    string backAction = "SearchResults";
+                    if (Model.CurrentFilter.SearchType == Enums.SearchTypes.FilteredDistance)
+                    {
+                        backAction = "SearchResultsWide";
+                    }
+
+                    @Html.ActionLink("Back to search results", backAction, "Search", 
+                        Helpers.SeoSearchFilterRouteCreate(Model.CurrentFilter), 
+                            new Dictionary<string, object> { { "class", "btnPattern submit leftNoPadding" }})
+                }    
+			</div>
+			<h2>@Html.DisplayFor(model => model.FacilityName)</h2>
+			@Html.HiddenFor(model => model.FacilityGuid)
+			<div class="mediumCol">
+				<div class="detailImg">
+                    <img alt="@Html.DisplayFor(model => model.FacilityName)" 
+                        src="@Html.DisplayFor(model => model.PhotoUri)" 
+                            title="@Html.DisplayFor(model => model.FacilityName)"
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /> 
+				</div>
+				<dl>
+					<dt>
+						Summary
+					</dt>
+					<dd class="detailsdescription">
+						@Html.DisplayFor(model => model.FacilityShortDescription)
+					</dd>
+				</dl>
+                <dl>
+					<dt>
+						Description
+					</dt>
+					<dd class="detailsdescription">
+						@Html.DisplayFor(model => model.FacilityLongDescription)
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						Facility or Services
+					</dt>
+					@Html.DisplayFor(model => model.TypeOfCareList)
+				</dl>
+                <dl>
+					<dt>Phone</dt>
+					<dd>@Html.DisplayFor(m => m.PhoneNumber)</dd>
+				</dl>
+                <dl>
+                    <dt>Website</dt>
+                    <dd>@Html.DisplayFor(m => m.Website)</dd>
+                </dl>
+				<dl>
+					<dt>
+						Location
+					</dt>
+					<dd>
+						@Html.DisplayFor(model => model.Address)
+					</dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.CityStateZip.City)
+                        ,&nbsp;@Html.DisplayFor(model => model.CityStateZip.State)
+                        &nbsp;@Html.DisplayFor(model => model.CityStateZip.ZipCode)
+                    </dd>
+                    <dd>
+                        
+                    </dd>
+				</dl>
+			</div>
+			<div class="mediumCol slider">                    
+				<div id="sliderWrapper">
+                    <ul>@Html.DisplayFor(model => model.Photos)</ul>
+				</div>
+                <dl>
+                    <dt>&nbsp;</dt>
+                    <dd>@Html.Partial("_MapListingDetailsPartial", Model)</dd>
+                </dl>
+			</div>
+		</div>
+	</div>
+</section><!--/page-->
+@Html.Resource(@<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.detailsdescription').shorten({ "showChars": 100 });
+                    });
+</script>, "js")

@@ -1,0 +1,30 @@
+﻿@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script type="text/javascript">
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    } (document, 'script', 'facebook-jssdk'));</script>, "social")
+ <!-- Place this tag in your head or just before your close body tag. -->
+@Html.Resource(@<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>, "social")
+@Html.Resource(@<style type="text/css">
+    .fb-pss { margin-bottom: 2px; vertical-align: bottom; }
+    .social-wrap 
+    { 
+        float:right; margin-right: 10px; vertical-align: bottom; padding-top: 5px;
+        position: relative; right: -20px; top: 0px;
+    }
+</style>, "css")
+<div class="social-wrap">
+    <div class="fb-send fb-pss" data-href="@Helpers.CurrentRequestUrl" data-font="verdana"></div>
+    <g:plus action="share" annotation="bubble"></g:plus>
+</div>
+<div id="fb-root"></div>

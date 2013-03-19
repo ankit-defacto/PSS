@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.5, 16.25" name="PSS2012">
+  <DataContextMoniker Name="/PSS2012DataContext" />
+  <nestedChildShapes>
+    <classShape Id="4b28a331-7526-4999-a771-f5e4202b8648" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PSS2012DataContext/CityStateZip" />
+      <nestedChildShapes>
+        <elementListCompartment Id="60e01eea-400f-40e9-8f9c-bf6129871675" absoluteBounds="0.76500000000000012, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bed9d334-b617-4c1c-9626-c21c61ff701c" absoluteBounds="3.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PSS2012DataContext/Click" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26e16419-f8d5-46c5-98d2-aa955d33e76a" absoluteBounds="3.7650000000000006, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ea42391d-bc25-4910-a63e-281ab519a93b" absoluteBounds="0.75, 3.75, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/PSS2012DataContext/FacilityLocationCriteria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2af2f82a-a05e-435e-9c23-43f6242fb1f2" absoluteBounds="0.76500000000000057, 4.2100000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="01b047dd-a4bb-4380-ae65-caf5f8710dca" absoluteBounds="3.75, 3.75, 2, 1.3862939453125018">
+      <DataClassMoniker Name="/PSS2012DataContext/FacilityOffering" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2c64a8e-8318-4583-87d6-5e96267f3273" absoluteBounds="3.7650000000000006, 4.2100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d91ddb9-c80f-4d90-9591-749f6a37107d" absoluteBounds="6.25, 0.75, 2.875, 1.3862939453125023">
+      <DataClassMoniker Name="/PSS2012DataContext/ListingType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d9598d34-8d49-4ae9-86f1-9c26daf29dd0" absoluteBounds="6.2650000000000006, 1.2100000000000009, 2.8449999999999998, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="120aeed3-85a8-4186-aa6e-1d71fc58f3f1" absoluteBounds="0.75, 6.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/PSS2012DataContext/Offering" />
+      <nestedChildShapes>
+        <elementListCompartment Id="788bd458-c54e-41dc-8a5b-ca3de496b95e" absoluteBounds="0.76500000000000057, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="39bb60df-6b96-44f2-819a-4bf270925c1d" absoluteBounds="6.75, 3.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/PSS2012DataContext/PaymentInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84d8a762-2f4e-4eeb-859a-988f616b7707" absoluteBounds="6.7650000000000006, 4.2100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab83b46d-0463-40cd-8c48-86dd0b54a11c" absoluteBounds="3.75, 6.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/PSS2012DataContext/PaymentInfoAudit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f57e670c-bc4b-4a9e-b9a1-8de91c7fa697" absoluteBounds="3.7650000000000006, 7.2100000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76bca33c-8930-423f-ac76-c4322208170a" absoluteBounds="9.125, 8.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/PSS2012DataContext/FacilityPhoto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f14300c7-44b7-4546-8c47-8ac3b7be7a98" absoluteBounds="9.14, 9.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="32b3055b-4167-4b4e-840c-083b74f840fe" absoluteBounds="0.625, 9.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/PSS2012DataContext/ClientCardInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df2d066f-833c-47a1-ba22-91cab36e6cd2" absoluteBounds="0.64000000000000012, 9.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="670c1d44-4b7e-4d30-93cf-440ef450a066" absoluteBounds="10.125, 4.75, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/PSS2012DataContext/Facility" />
+      <nestedChildShapes>
+        <elementListCompartment Id="08d042a1-35a5-434a-a1ae-522a04a7e74b" absoluteBounds="10.14, 5.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c9307882-73ab-4b46-9fb2-129ca84229a8" absoluteBounds="13.25, 5.25, 2, 4.2708154296875">
+      <DataClassMoniker Name="/PSS2012DataContext/FacilityAudit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96c3d2d5-000a-402a-ad3d-b15d6aaed5e6" absoluteBounds="13.265, 5.71, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ec4955d-7df2-4868-8fc0-36a95bc6779f" absoluteBounds="4.25, 10.125, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/PSS2012DataContext/Client" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b933288-c6ea-45bb-82a8-9ebf1364e043" absoluteBounds="4.265, 10.585, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6199f99d-cea6-4ffa-8263-83742d95a2b0" absoluteBounds="7.25, 11, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/PSS2012DataContext/ClientAudit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea80414f-1375-4a74-9a67-3a452ce86f8c" absoluteBounds="7.265, 11.46, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

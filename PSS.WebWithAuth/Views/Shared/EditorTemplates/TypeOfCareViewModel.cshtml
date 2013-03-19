@@ -1,0 +1,8 @@
+﻿@model PSS.WebWithAuth.ViewModels.TypeOfCareViewModel
+<div class="smallCol">
+    <label class="label_check">
+        @Model.TypeOfCareName
+        @Html.CheckBoxFor(x => x.Checked, new { @class = "checkbox" })
+    </label>
+    @Html.HiddenFor(x => x.TypeOfCareGuid)
+</div>

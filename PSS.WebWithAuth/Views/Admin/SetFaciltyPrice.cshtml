@@ -1,0 +1,85 @@
+﻿@model List<PSS.WebWithAuth.ViewModels.SetFacilityPriceViewModel>
+
+@{
+    ViewBag.Title = "PSS | Change Facility Price";
+    Layout = null;
+}
+<style type="text/css">
+    #pop-up-create .quote {width:700px !important;}
+    #pop-up-create .clearfix{width:700px !important;}
+    #pop-up-create .page .wrap {min-height:300px !important;}
+    #pop-up-create .formArea{min-height:220px !important;}
+    [type='checkbox']{margin:10px 15px 0 10px;}
+</style>
+
+<script type="text/ecmascript">
+    $('#Form1').submit(function () {
+        //var count = @Html.Raw(Json.Encode(Model.Count()));
+
+        var id = jQuery("#list").jqGrid('getGridParam', 'selarrrow');
+        if ($(this).valid()) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/admin/SetFaciltyPrice?clientGuidList=' + id, //url your posting to
+                data: $('#Form1').serialize(), //serialize the data in your form
+                success: function (result) {
+                    if (result.msg === 'ok') {
+                        //alert("Created Successfully");
+                        $('#pop-up-create').dialog('close');
+                        $("#list").setGridParam({ sortname: 'ClientName', sortorder: 'desc' }).trigger("reloadGrid");
+                    }
+                    else {
+                        $('#error').html(result.msg);
+                    }
+                }
+            });
+        }
+        return false;
+    });
+</script>
+
+
+@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+@Html.RenderResources("js")
+<section class="page clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Update Facility Price
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">   
+        @using (Html.BeginForm("SetFaciltyPrice", "Account", FormMethod.Post, new { @class = "searchForm editForm", id = "Form1" }))
+        {
+            @Html.ValidationMessage("setPrice")            
+            <div id="error" style="color:Red; padding:0 0 25px 0;"></div>
+            for (int i = 0; i < Model.Count; i++)
+            {    
+                @Html.HiddenFor(x => x[i].ListingTypeGuid)
+                @Html.HiddenFor(x => x[i].ListingTypeName)
+                <div class="fullW">
+                    <fieldset class="row left small">      
+                        <label class="smallCol">
+                            @Html.CheckBoxFor(x => x[i].IsChecked)
+                            @Html.DisplayFor(x => x[i].ListingTypeName)
+                        </label>
+                    </fieldset>
+			        <fieldset class="row left small">   
+                        <label class="smallCol">
+                            @Html.TextBoxFor(x => x[i].ListingPrice, new { @class = "input" })
+                            <br />
+                            @Html.ValidationMessageFor(x => x[i].ListingPrice)
+                        </label>
+                    </fieldset>
+                </div>
+            }
+            <div class="fullW"></div>
+            <fieldset class="row left submitArea small">
+                <button type="submit" class="btnPattern submit right">Save</button>
+            </fieldset>
+        }
+		</div>
+	</div>
+</section>

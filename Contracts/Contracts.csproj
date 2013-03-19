@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" xmlns:ov="http://www.concordmfg.com/MetadataOverview2.xsd">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CDA2E45-B066-4A9E-8AB2-B66287F3AEC7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConcordMfg.PremierSeniorSolutions.WebService.Contracts</RootNamespace>
+    <AssemblyName>ConcordMfg.PremierSeniorSolutions.WebService.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ServiceContracts\ICityStateZip.cs" />
+    <Compile Include="ServiceContracts\IClick.cs" />
+    <Compile Include="ServiceContracts\IClient.cs" />
+    <Compile Include="ServiceContracts\IClientAudit.cs" />
+    <Compile Include="ServiceContracts\IFacility.cs" />
+    <Compile Include="ServiceContracts\IFacilityAudit.cs" />
+    <Compile Include="ServiceContracts\IFacilityLocationCriteria.cs" />
+    <Compile Include="ServiceContracts\IFacilityOffering.cs" />
+    <Compile Include="ServiceContracts\IListingType.cs" />
+    <Compile Include="ServiceContracts\IOffering.cs" />
+    <Compile Include="ServiceContracts\IPaymentInfo.cs" />
+    <Compile Include="ServiceContracts\IPaymentInfoAudit.cs" />
+    <Compile Include="ServiceContracts\IFacilityPhoto.cs" />
+    <Compile Include="ServiceContracts\ICityStateZipWithFacility.cs" />
+    <Compile Include="ServiceContracts\IFacilityWithCityStateZip.cs" />
+    <Compile Include="ServiceContracts\IFacilityWithOffering.cs" />
+    <Compile Include="ServiceContracts\IOfferingWithFacility.cs" />
+    <Compile Include="DataContracts\CityStateZip.cs" />
+    <Compile Include="DataContracts\Click.cs" />
+    <Compile Include="DataContracts\Client.cs" />
+    <Compile Include="DataContracts\ClientAudit.cs" />
+    <Compile Include="DataContracts\Facility.cs" />
+    <Compile Include="DataContracts\FacilityAudit.cs" />
+    <Compile Include="DataContracts\FacilityLocationCriteria.cs" />
+    <Compile Include="DataContracts\FacilityOffering.cs" />
+    <Compile Include="DataContracts\ListingType.cs" />
+    <Compile Include="DataContracts\Offering.cs" />
+    <Compile Include="DataContracts\PaymentInfo.cs" />
+    <Compile Include="DataContracts\PaymentInfoAudit.cs" />
+    <Compile Include="DataContracts\FacilityPhoto.cs" />
+    <Compile Include="DataContracts\CityStateZipWithFacility.cs" />
+    <Compile Include="DataContracts\FacilityWithCityStateZip.cs" />
+    <Compile Include="DataContracts\FacilityWithOffering.cs" />
+    <Compile Include="DataContracts\OfferingWithFacility.cs" />
+    <Compile Include="FaultContracts\CityStateZipFault.cs" />
+    <Compile Include="FaultContracts\ClickFault.cs" />
+    <Compile Include="FaultContracts\ClientFault.cs" />
+    <Compile Include="FaultContracts\ClientAuditFault.cs" />
+    <Compile Include="FaultContracts\FacilityFault.cs" />
+    <Compile Include="FaultContracts\FacilityAuditFault.cs" />
+    <Compile Include="FaultContracts\FacilityLocationCriteriaFault.cs" />
+    <Compile Include="FaultContracts\FacilityOfferingFault.cs" />
+    <Compile Include="FaultContracts\ListingTypeFault.cs" />
+    <Compile Include="FaultContracts\OfferingFault.cs" />
+    <Compile Include="FaultContracts\PaymentInfoFault.cs" />
+    <Compile Include="FaultContracts\PaymentInfoAuditFault.cs" />
+    <Compile Include="FaultContracts\FacilityPhotoFault.cs" />
+    <Compile Include="FaultContracts\DefaultFaultContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties IsWCFDataContractsProject="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,51 @@
+﻿@using PSS.WebWithAuth.Infrastructure;
+@using PSS.WebWithAuth;
+<script type="text/javascript">
+@if (Request.IsAuthenticated)
+{
+    <text>
+        var userData = {
+			email: '@User.Identity.Name'
+		}; 
+    </text>
+    var user = SessionHandler.Current.GitAssertion;                    
+    if (user != null)
+    {
+		<text>
+			userData = {
+				email: '@user.VerifiedEmail', // required
+				displayName: '@user.FirstName' // optional
+			};
+		</text>
+    }
+}
+</script>
+@Html.Resource(@<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js"></script>, "js")
+@Html.Resource(@<script type="text/javascript" src="https://ajax.googleapis.com/jsapi"></script>, "js")
+@Html.Resource(@<script type="text/javascript">
+    google.load("identitytoolkit", "1", { packages: ["ac"], language: "en" });
+	$(function () {
+		window.google.identitytoolkit.setConfig({
+			developerKey: '@GitApiClient.GoogleApiKey',
+			companyName: 'Premier Senior Solutions',
+			callbackUrl: '@GitApiClient.GitCallbackUrl',
+			realm: '',
+			userStatusUrl: '@Url.Action("UserStatus","Account")',
+			loginUrl: '@Url.Action("LogOn","Account")',
+			signupUrl: '@Url.Action("Create","Account")',
+			homeUrl: '@Url.Action("Index", "Home")',
+			logoutUrl: '@Url.Action("LogOff","Account")',
+			idps: ['Gmail', 'Yahoo', 'Hotmail'],
+			tryFederatedFirst: true,
+			useCachedUserStatus: false,
+			useContextParam: false
+		});
+        var $navbar = $('#navbar');
+        $navbar.accountChooser();
+        if (typeof userData !== 'undefined') {
+            window.google.identitytoolkit.updateSavedAccount(userData);
+            window.google.identitytoolkit.showSavedAccount(userData.email);
+        }
+	});
+</script>, "js")
+<div id="navbar"></div>

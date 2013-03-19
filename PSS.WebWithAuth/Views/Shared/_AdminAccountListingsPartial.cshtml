@@ -1,0 +1,23 @@
+﻿@model IList<ConcordMfg.PremierSeniorSolutions.WebService.BusinessEntities.FacilityAudit>
+@if (Model.Count != 0)
+{
+<ul class="searchResultsHeading">
+	<li>
+		<span class="listingName">Listing</span>
+							
+		<span class="listingDate">Date Added</span>
+	</li>
+</ul>
+<ul class="searchResults">
+    @foreach (var listing in Model)
+    {
+        <li>
+		    <span class="listingName">@listing.FacilityName</span>
+		    <span class="listingDate">@listing.DateModified.ToLongDateString()</span>
+		    <span class="listingView">
+                @Html.ActionLink("See", "SeeListing", "Admin", new { facilityGuid = listing.FacilityGuid }, new { @class = "btnPattern submit leftNoPadding" })
+            </span>
+	    </li>
+    }
+</ul> 
+}

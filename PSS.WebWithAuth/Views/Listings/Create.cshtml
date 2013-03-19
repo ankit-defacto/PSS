@@ -1,0 +1,24 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingViewModelEdit
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "Create a listing on Premier Senior Solutions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+<section class="page listEdit clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Create New Listing
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+            <div>
+                @Html.Partial("_ListingEditPartial", Model)
+            </div>
+		    <div class="hidden">
+                <input type="hidden" id="upload-container" value="@Url.Action("Upload", "Listings")" />
+            </div>
+		</div>
+	</div>
+</section><!--/page-->

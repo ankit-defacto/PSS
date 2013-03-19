@@ -1,0 +1,12 @@
+﻿@model PSS.WebWithAuth.ViewModels.FacilityPhotoViewModel
+@using PSS.WebWithAuth.Infrastructure
+ <div id="facility-photo_@(Model.Uid)" class="@Model.CssStyle">
+    @Html.HiddenFor(model => model.FacilityPhotoGuid)@Html.HiddenFor(model => model.FacilityGuid)
+	<fieldset class="row left full">
+		<div class="clearfix"></div>
+		<label class="smallCol"><span id="s@(Model.Uid)">@Html.EditorFor(model => model.PhotoUri)</span></label>
+        <a id="i@(Model.Uid)" class="btnPattern submit remove leftNoPadding left">Remove</a>
+		<div id="ss@(Model.Uid)" class="facilityThumb"></div>
+	</fieldset>
+    <input type="hidden" class="facility-photo-data" data-container-id="@(Model.Uid)" />
+</div>

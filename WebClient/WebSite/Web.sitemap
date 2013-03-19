@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode url="~/Default.aspx" title="Homepage" description="Homepage">
+    <siteMapNode url="~/CityStateZip/CityStateZipGrid.aspx" title="City State Zip" description="Grid for displaying City State Zip data."  />
+    <siteMapNode url="~/Click/ClickGrid.aspx" title="Click" description="Grid for displaying Click data."  />
+    <siteMapNode url="~/Client/ClientGrid.aspx" title="Client" description="Grid for displaying Client data."  />
+    <siteMapNode url="~/ClientAudit/ClientAuditGrid.aspx" title="Client Audit" description="Grid for displaying Client Audit data."  />
+    <siteMapNode url="~/Facility/FacilityGrid.aspx" title="Facility" description="Grid for displaying Facility data."  />
+    <siteMapNode url="~/FacilityAudit/FacilityAuditGrid.aspx" title="Facility Audit" description="Grid for displaying Facility Audit data."  />
+    <siteMapNode url="~/ListingType/ListingTypeGrid.aspx" title="Listing Type" description="Grid for displaying Listing Type data."  />
+    <siteMapNode url="~/Offering/OfferingGrid.aspx" title="Offering" description="Grid for displaying Offering data."  />
+    <siteMapNode url="~/PaymentInfo/PaymentInfoGrid.aspx" title="Payment Info" description="Grid for displaying Payment Info data."  />
+    <siteMapNode url="~/PaymentInfoAudit/PaymentInfoAuditGrid.aspx" title="Payment Info Audit" description="Grid for displaying Payment Info Audit data."  />
+    <siteMapNode url="~/FacilityPhoto/FacilityPhotoGrid.aspx" title="FacilityPhoto" description="Grid for displaying FacilityPhoto data."  />
+  </siteMapNode>
+</siteMap>

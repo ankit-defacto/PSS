@@ -1,0 +1,40 @@
+﻿@model PSS.WebWithAuth.ViewModels.SearchResultsViewModel
+@using PSS.WebWithAuth.Infrastructure;
+@using PagedList.Mvc
+@using PagedList
+@if (Model.CurrentResults != null && Model.CurrentResults.Count > 0)
+{
+    @Html.Partial("_MapPartial", Model)
+	<ul class="searchResults">
+        @foreach (var item in Model.CurrentResults)
+        {
+            <li>
+				<img src="@item.PhotoUri" alt="@item.FacilityName" title="@item.FacilityName" 
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'"/>							
+				<ul class="listDetails">
+					<li>
+						<h5>@item.FacilityName</h5>
+					</li>
+					<li>
+						<p class="shortdescription">@item.FacilityShortDescription</p>
+					</li>
+					<li>
+                        @Html.ActionLink("Details", "ListingDetails", "Search",
+                            Helpers.SeoSearchFilterWithFacilityRouteCreate(Model.CurrentFilter.ToSearchFilterWithFacility(item.FacilityGuid)),
+                                        item.HtmlAttributes
+                                )
+					</li>
+				</ul>
+			</li>
+        }
+	</ul>
+    @Html.Resource(@<script type="text/javascript">
+                        $(document).ready(function () {
+                            $('.shortdescription').shorten({ "showChars": 100 });
+                        });
+    </script>, "js")
+}
+else
+{
+    @Html.Partial("Search/_SearchResultsWidePartial", Model)
+}

@@ -1,0 +1,32 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_AdminBeforeLogin.cshtml";
+}
+<style type="text/css">
+    p
+    {
+        color:Red;
+    }
+</style>
+
+<section class="page home clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			<br /> Error Page
+		</h1>
+		<div class="imgWrapper">
+			<img src="@Url.Content("~/Content/i/couple2.png")" alt="Your Guide To Local Assisted Living Options">
+		</div>
+		<div class="clearfix"></div>
+        <div class="formArea clearfix">
+			<fieldset class="row left"> 
+            <h2 style="padding:20px 0;">
+                Sorry, an error occurred while processing your request.
+            </h2>
+            <p>Message:  @Model.Exception.Message</p>
+			</fieldset>
+		</div>
+    </div>
+</section>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ConcordMfg.PremierSeniorSolutions.WebService.BusinessEntities.ListingViewModel>
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "Listings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Resource(@<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.shortdescription').shorten({ "showChars": 50 });
+                    });
+</script>, "js")
+<section class="page listings clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Listings
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+			<div class="smallCol">
+                @Html.ActionLink("Create New", "Create", "Listings", null, new { @class = "btnPattern submit" })
+			</div>
+			<div class="fullW searchResults">
+				<table class="listingRows">
+                @foreach (var item in Model)
+                { 
+					<tr>
+						<td class="image">
+							<img src="@item.PublicPhotoFileUri" 
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" alt="@item.FacilityName" />
+						</td>
+						<td class="name">
+							@Html.DisplayFor(modelItem => item.FacilityName)
+						</td>
+						<td class="address">
+							@Html.DisplayFor(modelItem => item.City) &nbsp;
+                            @Html.DisplayFor(modelItem => item.State) &nbsp;
+                            @Html.DisplayFor(modelItem => item.ZipCode) &nbsp;
+                            @Html.DisplayFor(modelItem => item.Address)
+						</td>
+						<td class="details">
+							@Html.DisplayFor(modelItem => item.PhoneNumber) &nbsp;
+                            @Html.DisplayFor(modelItem => item.Email) &nbsp;
+                            @Html.DisplayFor(modelItem => item.Website)
+						</td>
+						<td class="type">
+							@Html.DisplayFor(modelItem => item.ListingTypeName)
+						</td>
+						<td class="content">
+							<p class="shortdescription">@Html.DisplayFor(modelItem => item.Exerpt)</p>
+						</td>
+						<td class="links">
+                            @Html.ActionLink("Edit", "Edit", "Listings", new { facilityGuid = item.FacilityGuid }, new { @class = "btnPattern submit leftNoPadding" })
+                            @Html.ActionLink("View", "See", "Listings", new { facilityGuid = item.FacilityGuid }, new { @class = "btnPattern submit leftNoPadding" })
+                            @Html.ActionLink("Delete", "Delete", "Listings", new { facilityGuid = item.FacilityGuid }, new { @class = "btnPattern submit leftNoPadding" })
+						</td>
+					</tr>
+                }
+				</table>
+			</div><!--/fullW-->
+		</div>
+	</div>
+</section><!--/page-->

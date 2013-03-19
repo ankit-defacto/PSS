@@ -1,0 +1,121 @@
+﻿@model PSS.WebWithAuth.ViewModels.UserClientViewModel
+
+@{
+    ViewBag.Title = "PSS | Add User and Client account";
+    Layout = null;
+}
+<style type="text/css">
+    #pop-up-create .quote {width:700px !important;}
+    #pop-up-create .clearfix{width:700px !important;}
+    #pop-up-create .page .wrap {min-height:300px !important;}
+    #pop-up-create .formArea{min-height:220px !important;}
+</style>
+<script type="text/ecmascript">
+    $('#FormAddUserClient').submit(function () {
+        debugger;
+        if ($(this).valid()) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/admin/AddUserClient', //url your posting to
+                data: $('#FormAddUserClient').serialize(), //serialize the data in your form
+                success: function (result) {
+                    if (result.msg === 'ok') {
+                        //alert("Created Successfully");
+                        $('#pop-up-create').dialog('close');
+                        $("#list").setGridParam({ sortname: 'ClientID', sortorder: 'desc' }).trigger("reloadGrid");
+                    }
+                    else {
+                        $('#error').html(result.msg);
+                    }
+                }
+            });
+            $('#error').html('Please correct errors and try again');
+        }
+        return false;
+    });
+</script>
+
+@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+@Html.RenderResources("js")
+<section class="page clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Create an Account
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { @class = "searchForm editForm", id = "FormAddUserClient" }))
+{
+    @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+    @Html.ValidationSummary(true)
+            @Html.ValidationMessage("accountCreate")            
+            <div id="error" style="color:Red; padding:0 0 25px 0;"></div>
+            <div class="fullW noTop">
+				<h2>Login information</h2>
+				<div class="right">
+				</div>
+			</div>
+			<fieldset class="row left small">
+				<label class="smallCol">
+					UserName/Email                 
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+				</label>
+            </fieldset>
+			<fieldset class="row left small">
+				<label class="smallCol">
+					Password                    
+                    @Html.EditorFor(model => model.Passowrd)
+                    @Html.ValidationMessageFor(model => model.Passowrd)
+				</label>
+            </fieldset>                
+            <div class="fullW">
+				<h2>Account information</h2>
+				<div class="right">
+				</div>
+			</div>
+			<fieldset class="row left small">
+				<label class="smallCol">
+					Company Name                    
+                    @Html.EditorFor(model => model.ClientName)
+                    @Html.ValidationMessageFor(model => model.ClientName)
+				</label>
+				<label class="smallCol">
+					Address
+					@Html.EditorFor(model => model.Address)
+                    @Html.ValidationMessageFor(model => model.Address)
+				</label>
+				<label class="smallCol">
+					City
+					@Html.EditorFor(model => model.City)
+                    @Html.ValidationMessageFor(model => model.City)
+				</label>
+			</fieldset>
+			<fieldset class="row left small">
+				<label class="smallCol">
+					State
+					@Html.EditorFor(model => model.State)
+                    @Html.ValidationMessageFor(model => model.State)
+				</label>
+				<label class="smallCol">
+					Zip Code
+					@Html.EditorFor(model => model.ZipCode)
+                    @Html.ValidationMessageFor(model => model.ZipCode)
+				</label>
+				<label class="smallCol">
+					Phone Number
+					@Html.EditorFor(model => model.PhoneNumber)
+                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+				</label>
+			</fieldset>
+            <div class="fullW"></div>
+			<fieldset class="row left submitArea small">
+				<button type="submit" class="btnPattern submit right">Save</button>
+			</fieldset>
+}<!--/searchForm-->
+		</div>
+	</div>
+</section><!--/page-->

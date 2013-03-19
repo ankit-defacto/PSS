@@ -1,0 +1,106 @@
+﻿@model PSS.WebWithAuth.ViewModels.AccountWithListingsViewModel
+@{
+    ViewBag.Title = "PSS | View Account";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="page account clearfix">
+<div class="wrap clearfix">
+	<h1 class="quote">
+		@Model.ClientName
+	</h1>
+        @if (Model.IsFlagged)
+        {
+		    <div class="fullW noTop flagged">
+                Payment Failed. Check your Payment Card information and balance otherwise your account will be suspended in few days.
+            </div>
+        }
+	<div class="clearfix"></div>
+	<div class="formArea clearfix">
+		<div class="fullW noTop">
+			<h2>View Account</h2>
+			<div class="right">
+                @Html.ActionLink("Edit Your Account", "Edit", new { accountGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+			</div>
+		</div>
+		<div class="mediumCol leftNoPadding">
+			<dl>
+				<dt>
+					Company Name
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.ClientName)
+				</dd>
+				<dt>
+					Phone Number
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.PhoneNumber)
+				</dd>
+				<dt>
+					Email
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Email)
+				</dd>
+                <dd>
+                    <div>
+                        Your account is: @Html.DisplayFor(m => m.PauseAccount)
+                        @Html.Partial("_AccountTogglePartial", Model)
+                    </div>
+                </dd>
+			</dl>
+		</div>
+		<div class="mediumCol leftNoPadding">
+			<dl>
+				<dt>
+					Address
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Address)
+				</dd>
+				<dt>
+					City
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.City)
+				</dd>
+				<dt>
+					State
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.State)
+				</dd>
+				<dt>
+					Zip Code
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.ZipCode)
+				</dd>
+			</dl>
+		</div>
+		<div class="fullW">
+			<h2>Payment Card Details</h2>
+			<div class="right">
+            @if (Model.clientCardInfoVM.ClientCardGuid == new Guid())
+            {
+                @Html.ActionLink("Add Payment Card", "ClientCardInfo", null, new { @class = "btnPattern submit leftNoPadding left" })
+                }
+            else
+            {               
+                @Html.ActionLink("Edit Payment Card", "EditClientCardInfo", new { ClientGuid = Model.ClientGuid }, new { @class = "btnPattern submit leftNoPadding left" })
+            }
+			</div>
+		</div>
+		<div class="fullW">
+			@Html.Partial("_ClientCardInfo", Model.clientCardInfoVM)
+            <div class="clearfix"></div>
+		</div>
+		<div class="fullW">
+			<h2>Listings</h2>
+		</div>
+		<div class="fullW">
+			@Html.Partial("_AccountListingsPartial", Model.AccountListings)
+		</div><!--/fullW-->
+	</div>
+</div>
+</section><!--/page-->

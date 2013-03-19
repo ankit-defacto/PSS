@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_AdminBeforeLogin.cshtml";
+}
+@using PSS.WebWithAuth.Infrastructure;
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>, "js")
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>, "js")
+
+
+<section class="page home clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Verify Account
+		</h1>
+		<div class="imgWrapper">
+			<img src="@Url.Content("~/Content/i/couple2.png")" alt="Your Guide To Local Assisted Living Options">
+		</div>
+		<div class="clearfix"></div>
+        <div class="formArea clearfix">
+		<div class="fullW noTop">
+			<div class="right">                
+                @Html.ActionLink("Back to Login", "LogIn", null, new { @class = "btnPattern submit leftNoPadding right" })
+			</div>
+		</div>
+		<div class="fullW noTop">
+            <div class="left">
+                <p class="field-validation-error" style="color:#2A8882 !important;">Answer security question and new password will be sent to your Email.</p>
+            </div>
+		</div>
+@using (Html.BeginForm("VerifyAccount", "Admin", FormMethod.Post, new { @class = "searchForm editForm",id="verifyForm" }))
+{
+    @Html.AntiForgeryToken(Configurations.AntiForgeryTokenSalt)
+    //<span style="font-weight: bold; color: #ff0000;">@Html.ValidationSummary(true)</span> 
+           <div class="field-validation-error"> @ViewBag.Error</div>
+            @Html.Hidden("UserName", (string)ViewBag.UserName)
+            @Html.Hidden("PasswordQuestion", (string)ViewBag.SecurityQuestion)    
+			<fieldset class="row left">       
+				<label class="smallCol">
+                </label>
+            </fieldset>
+			<fieldset class="row left small">       
+				<label class="smallCol">
+                    <p></p> 
+                    <div>@ViewBag.SecurityQuestion</div>                 
+                    <div>
+                    <input id="Answer" name="Answer" type="text" size="100" required="required" class="input" /></div>
+				</label>				
+              <label class="smallCol">
+				 <button type="submit" class="btnPattern submit leftNoPadding left" >Send</button>
+			</label>
+			</fieldset>
+}
+		</div>
+    </div>
+</section>

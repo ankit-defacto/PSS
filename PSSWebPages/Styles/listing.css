@@ -1,0 +1,26 @@
+﻿.listingTitle {
+	font-size: 150%;
+	font-weight: bold;
+}
+
+.listingImage {
+	display: block;
+	width: 96px;
+	height: 96px;
+	margin-top: 16px;
+	border: 2px solid black;
+}
+
+.inputPair {
+	margin-top: 16px;
+}
+
+.listingLabel, .listingInput, .listingTitle {
+	display: inline;
+}
+
+.listingLabel {
+	margin-right: 16px;
+	vertical-align: top;
+	font-size: 125%;
+}

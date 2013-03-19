@@ -1,0 +1,5 @@
+﻿@model PSS.WebWithAuth.ViewModels.PhotoSliderViewModel
+@using PSS.WebWithAuth.Infrastructure
+<li>
+    <img src="@Model.Uri" alt="@Model.Alt" title="@Model.Alt" onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" />
+</li>

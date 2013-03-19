@@ -1,0 +1,119 @@
+﻿body 
+{
+	margin: 0;
+	padding: 0;
+	width: auto;
+	border-right: 1px solid black;
+}
+
+#company
+{
+	background-color: #AAAAAA;
+	border-bottom: 5px dashed Green;
+}
+#company h1
+{
+	color: Green;
+	padding-top: 10px;
+	padding-left: 100px;
+}
+
+#header
+{
+	background-color: #666666;
+	border-bottom: 1px solid black;
+}
+#header h2
+{
+	color: White;
+	padding-top: 10px;
+	padding-left: 200px;
+}
+
+#columnLeft
+{
+	float: left;
+	width: 200px;
+	/*margin-left: 10px;*/
+	padding-top: 1em;
+}
+
+#columnRight
+{
+	padding-top: 1em;
+	    /*  T  R  B   L   */
+	margin: 0 2em 0 200px;
+}
+
+#links
+{
+	background-color: #CCCCCC;
+	padding-bottom: 1em;
+	padding-left: 20px;
+	margin-right: 20px;
+}
+
+#btnAddNewCityStateZip
+{
+	margin-top: 10px;
+}
+
+#btnAddNewClick
+{
+	margin-top: 10px;
+}
+
+#btnAddNewClient
+{
+	margin-top: 10px;
+}
+
+#btnAddNewClientAudit
+{
+	margin-top: 10px;
+}
+
+#btnAddNewFacility
+{
+	margin-top: 10px;
+}
+
+#btnAddNewFacilityAudit
+{
+	margin-top: 10px;
+}
+
+#btnAddNewFacilityLocationCriteria
+{
+	margin-top: 10px;
+}
+
+#btnAddNewFacilityOffering
+{
+	margin-top: 10px;
+}
+
+#btnAddNewListingType
+{
+	margin-top: 10px;
+}
+
+#btnAddNewOffering
+{
+	margin-top: 10px;
+}
+
+#btnAddNewPaymentInfo
+{
+	margin-top: 10px;
+}
+
+#btnAddNewPaymentInfoAudit
+{
+	margin-top: 10px;
+}
+
+#btnAddNewFacilityPhoto
+{
+	margin-top: 10px;
+}

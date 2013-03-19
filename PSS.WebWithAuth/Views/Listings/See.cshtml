@@ -1,0 +1,112 @@
+﻿@model PSS.WebWithAuth.ViewModels.ListingViewModelEdit
+@using PSS.WebWithAuth.Infrastructure;
+@{
+    ViewBag.Title = "View Listing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Resource(@<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.descriptions').shorten({ "showChars": 100 });
+                    });
+</script>, "js")
+<section class="page details clearfix">
+	<div class="wrap clearfix">
+		<h1 class="quote">
+			Listing View
+		</h1>
+		<div class="clearfix"></div>
+		<div class="formArea clearfix">
+            @Html.HiddenFor(model => model.ActionName)
+            @Html.HiddenFor(model => model.SaveButtonText)
+            <div class="smallCol">
+                @Html.ActionLink("Edit", "Edit", new { facilityGuid = Model.FacilityGuid }, new  { @class = "btnPattern submit leftNoPadding" })
+			</div>
+            <div class="smallCol">
+                @Html.ActionLink("Back to list", "List", null, new { @class = "btnPattern submit leftNoPadding" })
+			</div>
+            <div class="smallCol">
+                @Html.ActionLink("Back to Account", "See", "Account", null, new Dictionary<string, object> { { "class", "btnPattern submit leftNoPadding" } })
+			</div>
+			<h2>@Html.DisplayFor(model => model.FacilityName)</h2>
+			<div class="mediumCol">
+				<div class="detailImg">
+                    <img alt="@Html.DisplayFor(model => model.FacilityName)" 
+                        src="@Model.PublicPhotoFileUri" 
+                            title="@Html.DisplayFor(model => model.FacilityName)"
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /> 
+				</div>
+				<dl>
+					<dt>
+						Summary
+					</dt>
+					<dd class="descriptions">
+						@Html.DisplayFor(model => model.Exerpt)
+					</dd>
+				</dl>
+                <dl>
+					<dt>
+						Description
+					</dt>
+					<dd class="descriptions">
+						@Html.DisplayFor(model => model.Description)
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						Facility or Services
+					</dt>
+					@Html.DisplayFor(model => model.TypeOfCareList)
+				</dl>
+                <dl>
+                     <dt>Type of Listing</dt>
+                     @Html.DisplayFor(model => model.ListingTypeName)       
+                </dl>
+                <dl>
+                     <dt>Billing Price</dt>
+                     $@Html.DisplayFor(model => model.Price)       
+                </dl>
+                <dl>
+                    <dt>
+                        Contact
+                    </dt>
+                    <dd>
+                        @Html.LabelFor(model => model.PhoneNumber) 
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+                    <dd>
+                        @Html.LabelFor(model => model.Email) 
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dd>
+                        @Html.LabelFor(model => model.Website)
+                        <a href="@Model.Website">@Html.DisplayFor(model => model.Website)</a>
+                    </dd>
+                </dl>
+				<dl>
+					<dt>
+						Location
+					</dt>
+					<dd>
+						@Html.DisplayFor(model => model.Address)
+					</dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.City)
+                        ,&nbsp;@Html.DisplayFor(model => model.State)
+                        &nbsp;@Html.DisplayFor(model => model.ZipCode)
+                    </dd>
+				</dl>
+			</div>
+			<div class="mediumCol slider">                    
+				<div id="sliderWrapper">
+                    <ul>
+                        @foreach (var photo in Model.FacilityPhotos)
+                        {
+                            <li><img src="@photo.PhotoUri" alt="@photo.FacilityPhotoGuid" title="Image" 
+                                onerror="this.src='@Url.Content(Configurations.EMPTYIMAGEURL)'" /></li>
+                        }
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><!--/page-->

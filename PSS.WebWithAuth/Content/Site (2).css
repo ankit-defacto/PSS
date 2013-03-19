@@ -1,0 +1,613 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body {
+	background-color: #5c87b2;
+	font-size: .85em;
+	font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+	margin: 0;
+	padding: 0;
+	color: #696969;
+}
+
+a:link {
+	color: #034af3;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #505abc;
+}
+
+a:hover {
+	color: #1d60ff;
+	text-decoration: none;
+}
+
+a:active {
+	color: #12eb87;
+}
+
+p, ul {
+	margin-bottom: 20px;
+	line-height: 1.6em;
+}
+
+header,
+footer,
+nav,
+section {
+	display: block;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+	font-size: 1.5em;
+	color: #000;
+}
+
+h1 {
+	font-size: 2em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+h2 {
+	padding: 0 0 10px 0;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+h4 {
+	font-size: 1.1em;
+}
+
+h5, h6 {
+	font-size: 1em;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header, #header {
+	position: relative;
+	margin-bottom: 0px;
+	color: #000;
+	padding: 0;
+}
+
+header h1, #header h1 {
+	font-weight: bold;
+	padding: 5px 0;
+	margin: 0;
+	color: #fff;
+	border: none;
+	line-height: 2em;
+	font-size: 32px !important;
+	text-shadow: 1px 1px 2px #111;
+}
+
+#main {
+	padding: 30px 30px 15px 30px;
+	background-color: #fff;
+	border-radius: 4px 0 0 0;
+	-webkit-border-radius: 4px 0 0 0;
+	-moz-border-radius: 4px 0 0 0;
+}
+
+footer, 
+#footer {
+	background-color: #fff;
+	color: #999;
+	padding: 10px 0;
+	text-align: center;
+	line-height: normal;
+	margin: 0 0 30px 0;
+	font-size: .9em;
+	border-radius: 0 0 4px 4px;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+ul#menu {
+	border-bottom: 1px #5C87B2 solid;
+	padding: 0 0 2px;
+	position: relative;
+	margin: 0;
+	text-align: right;
+}
+
+ul#menu li {
+	display: inline;
+	list-style: none;
+}
+
+ul#menu li#greeting {
+	padding: 10px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 2.8em;
+	color: #fff;
+}
+
+ul#menu li a {
+	padding: 10px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 2.8em;
+	background-color: #e8eef4;
+	color: #034af3;
+	border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+}
+
+ul#menu li a:hover {
+	background-color: #fff;
+	text-decoration: none;
+}
+
+ul#menu li a:active {
+	background-color: #a6e2a6;
+	text-decoration: none;
+}
+
+ul#menu li.selected a {
+	background-color: #fff;
+	color: #000;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset {
+	border: 1px solid #ddd;
+	padding: 0 1.4em 1.4em 1.4em;
+	margin: 0 0 1.5em 0;
+}
+
+legend {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+textarea {
+	min-height: 75px;
+}
+
+input[type="text"], 
+input[type="password"] {
+	border: 1px solid #ccc;
+	padding: 2px;
+	font-size: 1.2em;
+	color: #444;
+	width: 200px;
+}
+
+select {
+	border: 1px solid #ccc;
+	padding: 2px;
+	font-size: 1.2em;
+	color: #444;
+}
+
+input[type="submit"] {
+	font-size: 1.2em;
+	padding: 5px;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+	border: solid 1px #e8eef4;
+	border-collapse: collapse;
+}
+
+table td {
+	padding: 5px;
+	border: solid 1px #e8eef4;
+}
+
+table th {
+	padding: 6px 5px;
+	text-align: left;
+	background-color: #e8eef4;
+	border: solid 1px #e8eef4;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear {
+	clear: both;
+}
+
+.error {
+	color: Red;
+}
+
+nav, 
+#menucontainer {
+	margin-top: 40px;
+}
+
+div#title {
+	display: block;
+	float: left;
+	text-align: left;
+}
+
+#logindisplay {
+	font-size: 1.1em;
+	display: block;
+	text-align: right;
+	margin: 10px;
+	color: White;
+}
+
+#logindisplay a:link {
+	color: white;
+	text-decoration: underline;
+}
+
+#logindisplay a:visited {
+	color: white;
+	text-decoration: underline;
+}
+
+#logindisplay a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+	color: #ff0000;
+}
+
+.field-validation-valid {
+	display: none;
+}
+
+.input-validation-error {
+	border: 1px solid #ff0000;
+	background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+	font-weight: bold;
+	color: #ff0000;
+}
+
+.validation-summary-valid {
+	display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+	margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+	margin: 0.5em 0 0 0;
+}
+
+.text-box {
+	width: 30em;
+}
+
+.text-box.multi-line {
+	height: 6.5em;
+}
+
+.tri-state {
+	width: 6em;
+}
+
+
+/* Hacks for Signon in navigation bar. */
+ol.widget-navbar-menu { position:absolute; }
+li.widget-navbar-menuitem { display:list-item; position:relative;z-index: 9999; }
+
+
+/**********/
+/* BLOCKS */
+/**********/
+
+.spacingRight1 {
+	margin-right: 12px;
+}
+
+.spacingTop1 {
+	margin-top: 12px;
+}
+
+.indent1 {
+	margin-left: 24px;
+}
+
+.indent2 {
+	margin-left: 48px;
+}
+
+.indent3 {
+	margin-left: 72px;
+}
+
+.topspacing1 {
+	margin-top: 12px;
+}
+
+.topspacing2 {
+	margin-top: 24px;
+}
+
+.topspacing3 {
+	margin-top: 36px;
+}
+
+.bottomspacing1 {
+	padding-bottom: 12px;
+}
+
+.bottomspacing2 {
+	padding-bottom: 24px;
+}
+
+.bottomspacing3 {
+	padding-bottom: 36px;
+}
+
+
+/*******/
+/* PSS */
+/*******/
+
+
+.header {
+	width: 820px;
+	margin: 0;
+	padding: 0;
+}
+
+/*#topMenu {
+	margin-left: 11px;
+}*/
+
+img {
+	line-height: normal;
+}
+
+label, input {
+	display: block;
+}
+
+/* COLUMNS
+-----------------------------------*/
+
+.homeLeftColumn {
+	width: 280px;
+	min-height: 200px;
+	float: left;
+}
+
+.homeRightColumn {
+	width: 500px;
+	min-height: 200px;
+	float: left;
+}
+
+.leftColumnBalanced {
+	width: 410px;
+	float: left;
+}
+
+.rightColumnBalanced {
+	width: 410px;
+	float: left;
+}
+
+.DetailedSearchControl
+{
+	 background-color:Silver;
+	 width:1000px;
+	 padding:10px;
+}
+
+.LabelDiv
+{
+	color:Green;
+	width:50px;
+	display:inline;
+}
+
+.BoxDiv
+{
+	width:50px;
+	display:inline;
+	float:left;
+}
+
+#topMenu a {
+	margin: 0px;
+	padding: 0px;
+}
+
+/***********************************/
+
+#coupleBanner {
+	background-image: url(/images/bg-couple-820.png);
+	width: 820px;
+	height: 276px;
+}
+
+#homepageContent {
+	background-image: url(/images/bg-inner-body-820.png);
+	background-repeat: no-repeat;
+	width: 820px;
+	min-height: 590px;
+}
+
+#contactContent {
+	background-image: url(/images/bg-inner-body-820-contact.png);
+	background-repeat: no-repeat;
+	width: 820px;
+	height: 591px;
+}
+
+/***********************************/
+
+
+#Banner {
+	margin-top: 40px;
+}
+
+.Header
+{
+	padding: 20px 10px;
+	text-align: center;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	border-bottom: 1px solid black;
+	/*background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	-webkit-background-clip: padding;*/
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.blueBG {
+	background-color: LightBlue;
+}
+
+.greenBG {
+	background-color: LightGreen;
+}
+
+.greyBG {
+	background-color: #EBEBEB;
+}
+
+.newBlueBG {
+	background-color: #5FBDB7;
+}
+
+.border {
+	border: 1px solid black;
+}
+
+.roundedBorder {
+	border: 2px solid black;
+	border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+}
+
+.buttonText {
+	font-size: 120%;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+	color: #222222;
+}
+
+.roundedRectangle {
+	width: 160px;
+	height: 50px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	padding-top: 24px;
+	text-align: center;
+}
+
+.fixedWidthMedContainer {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.footnote {
+	margin-top: 8px;
+	text-align: center;
+	font-size: 90%;
+}
+
+.fullheight {
+	height: 840px;
+}
+
+.column {
+	float: left;
+}
+
+.blank {
+	clear: both;
+}
+
+/******************/
+
+#paymentButton {
+	width: 180px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 20px;
+}
+
+#submitButton {
+	width: 140px;
+	margin-top: 16px;
+	margin-bottom: 8px;
+	margin-left: 20px;
+}
+
+.button {
+	appearance: button;
+	box-shadow: 1px 1px 3px;
+/*	-moz-box-shadow: 1px 1px 3px;
+	-webkit-box-shadow: 1px 1px 3px;*/
+}
+
+.sidespacing {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#checklistContainer h4 {
+	margin-top: 16px;
+}
+
+#checklistContainer div {
+	margin-top: 6px;
+}
+
+#logindisplay {
+	float: right;
+}
